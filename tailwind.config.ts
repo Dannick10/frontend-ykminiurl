@@ -8,10 +8,11 @@ export default {
   ],
   theme: {
     extend: {
-      colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
-      },
+      fontFamily: {
+        sora: ["Sora", "sans-serif"],
+        ramabhadra: ["Ramabhadra", "sans-serif"],
+        poppins: ["Poppins","serif"]
+      }
     },
   },
   plugins: [],
