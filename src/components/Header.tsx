@@ -26,7 +26,7 @@ const Header = () => {
     ]
 
   return (
-    <aside className="flex justify-between px-10 items-center gap-2">
+    <aside className="flex justify-between px-10 items-center gap-2 font-sora">
         <div className='flex gap-2'>
 
     <Image src={logo} alt="logo" width={50} height={50} />
@@ -37,7 +37,7 @@ const Header = () => {
 
     <ul className='flex justify-center items-center gap-10 text-[24px] font-light '>
         {navItems.map((items,i) => (
-            <Link href={items.url}>
+            <Link href={items.url} key={i}>
                 <li>{items.name}</li>
             </Link>
         ))}

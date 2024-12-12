@@ -17,6 +17,10 @@
 ul, img, input, button {
   user-select: none;
 }
+button {
+  font-family: 'Ramabhadra';
+  font-weight: bold;
+}
 
 * {
   margin: 0;
