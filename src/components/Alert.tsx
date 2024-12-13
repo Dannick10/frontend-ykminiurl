@@ -1,13 +1,14 @@
 import { twMerge } from "tailwind-merge";
 import clsx from "clsx";
-
+import { IoMdClose } from "react-icons/io";
 interface AlertProps {
   title: string;
   subtitle: string;
   colors: "green" | "red" | "yellow";
+  handleCloseMsg: () => void;
 }
 
-const Alert = ({ title, subtitle, colors }: AlertProps) => {
+const Alert = ({ title, subtitle, colors,handleCloseMsg }: AlertProps) => {
   const colorMap = {
     green: {
       bg: "bg-green-100",
@@ -42,7 +43,8 @@ const Alert = ({ title, subtitle, colors }: AlertProps) => {
           "rounded-b",
           "px-4",
           "py-3",
-          "shadow-md"
+          "shadow-md",
+          "relative"
         )
       )}
       role="alert"
@@ -70,6 +72,11 @@ const Alert = ({ title, subtitle, colors }: AlertProps) => {
           <p className="text-sm">{subtitle}</p>
         </div>
       </div>
+            <div className="absolute right-0 top-0 text-[30px]" onClick={handleCloseMsg}>
+      <IoMdClose />
+
+            </div>
+
     </div>
   );
 };

@@ -12,24 +12,26 @@ export default function Home() {
     createShortLink,
     msg,
     loading,
+    url,
+    password,
     Seturl,
     shortUrl,
-    url,
     Setpassword,
-    password,
+    Setmsg
   } = useShortLink();
 
+  
   return (
     <section className="flex flex-col gap-30 px-30 py-10">
       {msg.status && (
-        <Alert title={msg.title} subtitle={msg.subtitle} colors={msg.color} />
+        <Alert title={msg.title} subtitle={msg.subtitle} colors={msg.color}  handleCloseMsg={() => Setmsg('')}/>
       )}
 
       {loading && (
-        <div role="status" >
+        <div role="status" className="w-full h-full absolute flex justify-center items-center bg-black bg-opacity-10 z-10">
           <svg
             aria-hidden="true"
-            className="w-10 h-10 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
+            className="w-10 h-10 text-gray-200 animate-spin dark:text-gray-600 fill-[#BF2C0B]"
             viewBox="0 0 100 101"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
@@ -85,7 +87,7 @@ export default function Home() {
                 type="text"
                 placeholder="Cole seu link"
                 className="w-full h-full font-sora font-light outline-none px-4 py-2 text-[#211D26]"
-                value={url}
+                value={url || ""}
                 onChange={(e) => Seturl(e.target.value)}
                 />
               <button
@@ -100,7 +102,7 @@ export default function Home() {
                 {shortUrl &&
                 <div className="mt-4 flex justify-center items-center flex-col gap-4">
                 <p className="font-sora font-bold text-sm text-[#D7D7D7] bg-[#034C8C] p-2 rounded-full">Seu Link está pronto para ser copiado</p>
-                <p className="font-ramabhadra font-bold text-lg text-[#BF2C0B]">www.localhost/{shortUrl}</p>
+                <p className="font-ramabhadra font-bold text-lg text-[#BF2C0B]">www.localhost:3000/redirect?link={shortUrl.shorturl}</p>
                 </div>
                 }
         </div>
