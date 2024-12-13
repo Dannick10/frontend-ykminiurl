@@ -73,7 +73,7 @@ export default function Home() {
             {viewPassword && (
               <div className="border-2 rounded-[20px] py-1.5 px-1.5 w-[367px] border-[#BF2C0B] overflow-hidden relative flex">
                 <input
-                  type="number"
+                  type="text"
                   placeholder="digite uma senha"
                   className="w-full h-full font-sora font-light outline-none px-4 py-2 text-[#211D26]"
                   value={password || null}
@@ -102,7 +102,7 @@ export default function Home() {
                 {shortUrl &&
                 <div className="mt-4 flex justify-center items-center flex-col gap-4">
                 <p className="font-sora font-bold text-sm text-[#D7D7D7] bg-[#034C8C] p-2 rounded-full">Seu Link está pronto para ser copiado</p>
-                <p className="font-ramabhadra font-bold text-lg text-[#BF2C0B]">www.localhost:3000/redirect?link={shortUrl.shorturl}</p>
+                <p className="font-ramabhadra font-bold text-lg text-[#BF2C0B]">www.localhost:3000/redirect?link={shortUrl.shortUrl}</p>
                 </div>
                 }
         </div>

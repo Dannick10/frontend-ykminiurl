@@ -3,20 +3,22 @@ import { useRouter } from "next/navigation";
 
 import useShortLink from "@/hooks/useShortLink";
 import { useSearchParams } from "next/navigation";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import Alert from "@/components/Alert";
 const Redirect = () => {
-  const { shortUrl, getOriginalLink, loading, msg, Setmsg, password, Setpassword } = useShortLink();
+  const { shortUrl, getOriginalLink, postUnlockLink, loading, msg, Setmsg, password, Setpassword } = useShortLink();
 
   const router = useRouter();
 
   const searchParams = useSearchParams();
   const link = searchParams.get("link");
+  const [url,Seturl] = useState<string>()
 
   useEffect(() => {
     if (link) {
       getOriginalLink(link);
+      Seturl(link)
     }
   }, [link]);
 
@@ -82,12 +84,20 @@ const Redirect = () => {
           <div>
             <div className="border-2 rounded-[20px] py-1.5 px-1.5 w-[367px] border-[#BF2C0B] overflow-hidden relative flex">
               <input
-                type="number"
+                type="password"
                 placeholder="senha"
                 className="w-full h-full font-sora font-light outline-none px-4 py-2 text-[#211D26]"
                 value={password || null}
                 onChange={(e) => Setpassword(e.target.value)}
               />
+               {url && <>
+                <button
+                className="w-[60%] right-0 top-0 flex justify-center items-center px-[13px] py-1 rounded-[24px] border-[1px] bg-[#034C8C] text-[#D7D7D7]"
+                onClick={() => postUnlockLink(url)}
+                >
+                Desbloquear
+              </button>
+                    </>}
             </div>
           </div>
         )}

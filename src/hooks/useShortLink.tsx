@@ -3,10 +3,12 @@
 import {
   getOriginalUrlendpoint,
   postShortURLendpoint,
+  postUnlockURLpasswrodendpoint,
 } from "@/services/apiEndpoint";
 import { useEffect, useState } from "react";
-import { IpostData } from "@/interfaces/LinkInterfaces";
+import { IPostUnlockPassword, IpostData } from "@/interfaces/LinkInterfaces";
 import linkTratament from "@/utils/LinkTratament";
+import { error } from "console";
 
 type errorObject = {
   message: string;
@@ -20,7 +22,7 @@ type msg = {
 } | null;
 
 type getUrl = {
-  shorturl?: string;
+  shortUrl?: string;
   url?: string;
   security?: boolean;
 };
@@ -56,6 +58,7 @@ const useShortLink = () => {
     }
   };
 
+
   const withLoading = async (callback: () => Promise<void>) => {
     SetLoading(true);
     try {
@@ -87,7 +90,7 @@ const useShortLink = () => {
         const response = await postShortURLendpoint(postData);
         setMessage("sucesso", response.message, "green", true);
         SetshortURL({
-          shorturl: response.shortUrl,
+          shortUrl: response.shortUrl,
         });
         Seturl(null);
       } catch (error) {
@@ -121,7 +124,7 @@ const useShortLink = () => {
 
         SetshortURL({
           url: newUrl,
-          shorturl: response.shortUrl,
+          shortUrl: response.shortUrl,
           security: response.security,
         });
       } catch (error) {
@@ -129,10 +132,49 @@ const useShortLink = () => {
       }
     });
   };
+  console.log(password)
+  const postUnlockLink = async (url: string) => {
+    if (!url) {
+      setMessage("Atenção", "Há um erro com a url", "yellow", true);
+      return;
+    }
+
+    if (!password) {
+      setMessage("Atenção", "É necessario preencher o campo", "yellow", true);
+      return;
+    }
+
+    const PostUnlockData: IPostUnlockPassword = {
+      shortUrl: url,
+      password: password,
+    };
+
+    await withLoading(async () => {
+      try {
+        const response = await postUnlockURLpasswrodendpoint(PostUnlockData);
+        const newUrl = linkTratament(response.url);
+        SetshortURL({
+          url: newUrl,
+          shortUrl: url,
+        });
+        Setpassword('')
+        setMessage(
+          "sucesso",
+          "seu link está pronto para ser acessado, clique no botão abaixo",
+          "green",
+          true
+        );
+      } catch (error) {
+        handleError(error);
+        Setpassword('')
+      }
+    });
+  };
 
   return {
     getOriginalLink,
     createShortLink,
+    postUnlockLink,
     msg,
     loading,
     shortUrl,
