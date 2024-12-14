@@ -76,7 +76,7 @@ export default function Home() {
                   type="text"
                   placeholder="digite uma senha"
                   className="w-full h-full font-sora font-light outline-none px-4 py-2 text-[#211D26]"
-                  value={password || null}
+                  value={password}
                   onChange={(e) => Setpassword(e.target.value)}
                   />
               </div>

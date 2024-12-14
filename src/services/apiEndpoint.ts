@@ -1,4 +1,4 @@
-import { IGetShortLinkResponse, IPostUnlockPassword, IResponseUnlockPassword, IShortLinkResponse, IpostData } from "@/interfaces/LinkInterfaces"
+import { IGetShortLinkResponse, IPostInfoLink, IPostUnlockPassword, IResponseInfoLink, IResponseUnlockPassword, IShortLinkResponse, IpostData } from "@/interfaces/LinkInterfaces"
 import { apiService } from "./apiServices"
 import { url } from "inspector"
 
@@ -15,5 +15,10 @@ export const getOriginalUrlendpoint = async (url: string): Promise<IGetShortLink
 
 export const postUnlockURLpasswrodendpoint = async (body: IPostUnlockPassword): Promise<IResponseUnlockPassword> => {
         const  result = await apiService<IResponseUnlockPassword>('http://localhost:8081/api/password',"POST",body)
+        return result
+}
+
+export const postInfoURLendpoint = async (body: IPostInfoLink): Promise<IResponseInfoLink> => {
+        const result = await apiService<IResponseInfoLink>("http://localhost:8081/api/password", "POST", body)
         return result
 }

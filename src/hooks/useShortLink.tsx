@@ -2,11 +2,16 @@
 
 import {
   getOriginalUrlendpoint,
+  postInfoURLendpoint,
   postShortURLendpoint,
   postUnlockURLpasswrodendpoint,
 } from "@/services/apiEndpoint";
 import { useEffect, useState } from "react";
-import { IPostUnlockPassword, IpostData } from "@/interfaces/LinkInterfaces";
+import {
+  IPostInfoLink,
+  IPostUnlockPassword,
+  IpostData,
+} from "@/interfaces/LinkInterfaces";
 import linkTratament from "@/utils/LinkTratament";
 import { error } from "console";
 
@@ -57,7 +62,6 @@ const useShortLink = () => {
       setMessage("error", "Ocorreu um erro desconhecido.", "red", true);
     }
   };
-
 
   const withLoading = async (callback: () => Promise<void>) => {
     SetLoading(true);
@@ -132,7 +136,6 @@ const useShortLink = () => {
       }
     });
   };
-  console.log(password)
   const postUnlockLink = async (url: string) => {
     if (!url) {
       setMessage("Atenção", "Há um erro com a url", "yellow", true);
@@ -157,7 +160,7 @@ const useShortLink = () => {
           url: newUrl,
           shortUrl: url,
         });
-        Setpassword('')
+        Setpassword("");
         setMessage(
           "sucesso",
           "seu link está pronto para ser acessado, clique no botão abaixo",
@@ -166,12 +169,43 @@ const useShortLink = () => {
         );
       } catch (error) {
         handleError(error);
-        Setpassword('')
+        Setpassword("");
       }
     });
   };
 
+  const postInfoLink = async () => {
+   
+    
+    if (!url) {
+      setMessage("Atenção", "Há um erro com a url", "yellow", true);
+      return;
+    }
+    
+    let regexUrl = /link=([^&]+)/;
+    let match = url.match(regexUrl);
+    let result = match ? match[1] : "";
+
+    
+
+    const postInfoData: IPostInfoLink = {
+      shortUrl: result,
+      password: password,
+    };
+    
+      await (withLoading(async () => {
+          try{
+             const response = await postInfoURLendpoint(postInfoData)
+             /*Amanhã continuo */
+          }catch(error) {
+
+          }
+      }))
+      
+  };
+
   return {
+    postInfoLink,
     getOriginalLink,
     createShortLink,
     postUnlockLink,

@@ -24,3 +24,15 @@ export interface IResponseUnlockPassword {
     url: string,
     security: number
 }
+
+export interface IPostInfoLink {
+    shortUrl: string,
+    password: string
+}
+
+export interface IResponseInfoLink {
+    originalUrl: string,
+    shortUrl: string,
+    clicks: number,
+    createdAt: string
+}
