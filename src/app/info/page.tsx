@@ -10,6 +10,7 @@ import { IoSearch } from "react-icons/io5";
 import { MdOutlineVisibility } from "react-icons/md";
 import { MdVisibilityOff } from "react-icons/md";
 import Inputs from "@/components/Inputs";
+import ShowInfoLinks from "./components/ShowInfoLinks";
 
 const page = () => {
   const {
@@ -29,6 +30,10 @@ const page = () => {
     Setpassword,
     Setmsg,
   } = useShortLink();
+
+  if(true) {
+    return <ShowInfoLinks url="www.com" ShortUrl="ebfc" clicks={5} Date={"Date.now()"} />
+  }
 
   return (
     <section className="flex flex-col gap-30 px-30 py-10">

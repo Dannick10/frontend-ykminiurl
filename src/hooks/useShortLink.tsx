@@ -60,7 +60,7 @@ const useShortLink = () => {
 
   const handleError = (error: unknown) => {
     if (error instanceof Error) {
-      console.log(error)
+      console.log(error);
       setMessage("error", error.message, "red", true);
     } else {
       setMessage("error", "Ocorreu um erro desconhecido.", "red", true);
@@ -100,10 +100,10 @@ const useShortLink = () => {
         SetshortURL({
           shortUrl: response.shortUrl,
         });
-        Seturl('');
+        Seturl("");
       } catch (error) {
         handleError(error);
-        Seturl('');
+        Seturl("");
       }
     });
   };
@@ -165,7 +165,6 @@ const useShortLink = () => {
           shortUrl: url,
         });
         Setpassword("");
-       
       } catch (error) {
         handleError(error);
         Setpassword("");
@@ -174,38 +173,44 @@ const useShortLink = () => {
   };
 
   const postInfoLink = async () => {
-   
-    
     if (!url) {
       setMessage("Atenção", "Há um erro com a url", "yellow", true);
       return;
     }
-    
+
     let regexUrl = /link=([^&]+)/;
     let match = url.match(regexUrl);
     let result = match ? match[1] : "";
 
-  
     const postInfoData: IPostInfoLink = {
       shortUrl: result,
       password: password,
     };
-    
-      await (withLoading(async () => {
-          try{
-             const response = await postInfoURLendpoint(postInfoData)
-             SetshortURL({
-              originalUrl: response.originalUrl,
-              shortUrl: response.shortUrl,
-              clicks: response.clicks,
-              createdAt:response.createdAt
-              });
-              
-            }catch(error) {
-              handleError(error)
-          }
-      }))
-      
+
+    await withLoading(async () => {
+      try {
+        const response = await postInfoURLendpoint(postInfoData);
+        
+        if(response) {
+          setMessage(
+            "seu link está liberado",
+            response.message,
+            "green",
+            true
+          );
+        }
+        
+        SetshortURL({
+          originalUrl: response.originalUrl,
+          shortUrl: response.shortUrl,
+          clicks: response.clicks,
+          createdAt: response.createdAt,
+        });
+
+      } catch (error) {
+        handleError(error);
+      }
+    });
   };
 
   return {

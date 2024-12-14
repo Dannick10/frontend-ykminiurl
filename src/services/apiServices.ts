@@ -15,10 +15,14 @@ export const apiService = async <T>(
     if (response.status == 400) {
       throw new Error("URL não é válida");
     }
-
+    
+    if (response.status == 401) {
+      throw new Error("Esse link tem segurança, Por favor digite a senha!")
+    }
     if (response.status == 403) {
       throw new Error("Senha incorreta");
     }
+
 
     if (response.status == 404) {
       throw new Error("não existe esse link");
