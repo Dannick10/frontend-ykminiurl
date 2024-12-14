@@ -27,14 +27,17 @@ type msg = {
 } | null;
 
 type getUrl = {
+  originalUrl?: string;
+  createdAt?: string;
+  clicks?: number;
   shortUrl?: string;
   url?: string;
   security?: boolean;
 };
 const useShortLink = () => {
-  const [url, Seturl] = useState<string | null>("");
+  const [url, Seturl] = useState<string>("");
 
-  const [password, Setpassword] = useState<any>(null);
+  const [password, Setpassword] = useState<string>("");
 
   const [shortUrl, SetshortURL] = useState<getUrl | null>();
 
@@ -96,10 +99,10 @@ const useShortLink = () => {
         SetshortURL({
           shortUrl: response.shortUrl,
         });
-        Seturl(null);
+        Seturl('');
       } catch (error) {
         handleError(error);
-        Seturl(null);
+        Seturl('');
       }
     });
   };
@@ -161,12 +164,7 @@ const useShortLink = () => {
           shortUrl: url,
         });
         Setpassword("");
-        setMessage(
-          "sucesso",
-          "seu link está pronto para ser acessado, clique no botão abaixo",
-          "green",
-          true
-        );
+       
       } catch (error) {
         handleError(error);
         Setpassword("");
@@ -186,8 +184,7 @@ const useShortLink = () => {
     let match = url.match(regexUrl);
     let result = match ? match[1] : "";
 
-    
-
+  
     const postInfoData: IPostInfoLink = {
       shortUrl: result,
       password: password,
@@ -196,9 +193,15 @@ const useShortLink = () => {
       await (withLoading(async () => {
           try{
              const response = await postInfoURLendpoint(postInfoData)
-             /*Amanhã continuo */
-          }catch(error) {
-
+             SetshortURL({
+              originalUrl: response.originalUrl,
+              shortUrl: response.shortUrl,
+              clicks: response.clicks,
+              createdAt:response.createdAt
+              });
+              
+            }catch(error) {
+              handleError(error)
           }
       }))
       

@@ -6,19 +6,34 @@ import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import Alert from "@/components/Alert";
+import Inputs from "@/components/Inputs";
+import usePassword from "@/hooks/usePassword";
+
+
 const Redirect = () => {
-  const { shortUrl, getOriginalLink, postUnlockLink, loading, msg, Setmsg, password, Setpassword } = useShortLink();
+  const {
+    shortUrl,
+    getOriginalLink,
+    postUnlockLink,
+    loading,
+    msg,
+    Setmsg,
+    password,
+    Setpassword,
+  } = useShortLink();
 
   const router = useRouter();
 
+  const { changeVisiblity, handleChangeVisibility } = usePassword()
+
   const searchParams = useSearchParams();
   const link = searchParams.get("link");
-  const [url,Seturl] = useState<string>()
+  const [url, Seturl] = useState<string>();
 
   useEffect(() => {
     if (link) {
       getOriginalLink(link);
-      Seturl(link)
+      Seturl(link);
     }
   }, [link]);
 
@@ -26,7 +41,7 @@ const Redirect = () => {
     if (shortUrl) {
       const { security, url } = shortUrl;
       if (!security && url) {
-        console.log(shortUrl);
+       router.push(url)
       } else if (!url) {
         console.error("URL inválida ou vazia.");
       }
@@ -82,23 +97,22 @@ const Redirect = () => {
           </div>
         ) : (
           <div>
-            <div className="border-2 rounded-[20px] py-1.5 px-1.5 w-[367px] border-[#BF2C0B] overflow-hidden relative flex">
-              <input
-                type="password"
-                placeholder="senha"
-                className="w-full h-full font-sora font-light outline-none px-4 py-2 text-[#211D26]"
-                value={password}
-                onChange={(e) => Setpassword(e.target.value)}
-              />
-               {url && <>
-                <button
-                className="w-[60%] right-0 top-0 flex justify-center items-center px-[13px] py-1 rounded-[24px] border-[1px] bg-[#034C8C] text-[#D7D7D7]"
-                onClick={() => postUnlockLink(url)}
-                >
-                Desbloquear
-              </button>
-                    </>}
-            </div>
+            <Inputs
+            value={password}
+            onChange={(e) => Setpassword(e.target.value)}
+            type={changeVisiblity}
+            >
+              <>
+                {url && (
+                  <button
+                    className="w-[60%] right-0 top-0 flex justify-center items-center px-[13px] py-1 rounded-[24px] border-[1px] bg-[#034C8C] text-[#D7D7D7]"
+                    onClick={() => postUnlockLink(url)}
+                  >
+                    Desbloquear
+                  </button>
+                )}
+              </>
+            </Inputs>
           </div>
         )}
       </div>

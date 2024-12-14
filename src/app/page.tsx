@@ -6,8 +6,16 @@ import usePassword from "@/hooks/usePassword";
 import Alert from "@/components/Alert";
 import useShortLink from "@/hooks/useShortLink";
 import { useEffect } from "react";
+import Inputs from "@/components/Inputs";
+import { MdOutlineVisibility, MdVisibilityOff } from "react-icons/md";
+import { IoSearch } from "react-icons/io5";
 export default function Home() {
-  const { viewPassword, handleVisibilityPassword } = usePassword();
+  const {
+    viewPassword,
+    handleVisibilityPassword,
+    changeVisiblity,
+    handleChangeVisibility,
+  } = usePassword();
   const {
     createShortLink,
     msg,
@@ -17,18 +25,25 @@ export default function Home() {
     Seturl,
     shortUrl,
     Setpassword,
-    Setmsg
+    Setmsg,
   } = useShortLink();
 
-  
   return (
     <section className="flex flex-col gap-30 px-30 py-10">
       {msg.status && (
-        <Alert title={msg.title} subtitle={msg.subtitle} colors={msg.color}  handleCloseMsg={() => Setmsg('')}/>
+        <Alert
+          title={msg.title}
+          subtitle={msg.subtitle}
+          colors={msg.color}
+          handleCloseMsg={() => Setmsg("")}
+        />
       )}
 
       {loading && (
-        <div role="status" className="w-full h-full absolute flex justify-center items-center bg-black bg-opacity-10 z-10">
+        <div
+          role="status"
+          className="w-full h-full absolute flex justify-center items-center bg-black bg-opacity-10 z-10"
+        >
           <svg
             aria-hidden="true"
             className="w-10 h-10 text-gray-200 animate-spin dark:text-gray-600 fill-[#BF2C0B]"
@@ -66,45 +81,48 @@ export default function Home() {
               <button
                 className="flex  justify-center items-center px-[13px] py-1 rounded-[24px] border-[1px] border-[#BF2C0B] text-[#BF2C0B]"
                 onClick={handleVisibilityPassword}
-                >
+              >
                 adicionar senha
               </button>
             </div>
             {viewPassword && (
-              <div className="border-2 rounded-[20px] py-1.5 px-1.5 w-[367px] border-[#BF2C0B] overflow-hidden relative flex">
-                <input
-                  type="text"
-                  placeholder="digite uma senha"
-                  className="w-full h-full font-sora font-light outline-none px-4 py-2 text-[#211D26]"
-                  value={password}
-                  onChange={(e) => Setpassword(e.target.value)}
-                  />
-              </div>
+              <Inputs
+                value={password}
+                onChange={(e) => Setpassword(e.target.value)}
+                type={changeVisiblity}
+              >
+                <button
+                  className="w-[20%] right-0 top-0 flex justify-center items-center px-[13px] py-1 rounded-[24px] border-[1px]  text-[#BF2C0B] cursor-pointer"
+                  onClick={handleChangeVisibility}
+                >
+                  {changeVisiblity == "text" ? (
+                    <MdOutlineVisibility />
+                  ) : (
+                    <MdVisibilityOff />
+                  )}
+                </button>
+              </Inputs>
             )}
 
-            <div className="border-2 rounded-[20px] py-1.5 px-1.5 w-[367px] border-[#BF2C0B] overflow-hidden relative flex">
-              <input
-                type="text"
-                placeholder="Cole seu link"
-                className="w-full h-full font-sora font-light outline-none px-4 py-2 text-[#211D26]"
-                value={url || ""}
-                onChange={(e) => Seturl(e.target.value)}
-                />
+            <Inputs value={url} onChange={(e) => Seturl(e.target.value)}>
               <button
-                className="w-[60%] right-0 top-0 flex justify-center items-center px-[13px] py-1 rounded-[24px] border-[1px] bg-[#034C8C] text-[#D7D7D7]"
+                className="w-[30%] right-0 top-0 flex justify-center items-center px-[13px] py-1 rounded-[24px] border-[1px] bg-[#034C8C] text-[#D7D7D7]"
                 onClick={createShortLink}
-                >
-                Encurtar link
+              >
+                <IoSearch />
               </button>
-
-            </div>
+            </Inputs>
           </div>
-                {shortUrl &&
-                <div className="mt-4 flex justify-center items-center flex-col gap-4">
-                <p className="font-sora font-bold text-sm text-[#D7D7D7] bg-[#034C8C] p-2 rounded-full">Seu Link está pronto para ser copiado</p>
-                <p className="font-ramabhadra font-bold text-lg text-[#BF2C0B]">www.localhost:3000/redirect?link={shortUrl.shortUrl}</p>
-                </div>
-                }
+          {shortUrl && (
+            <div className="mt-4 flex justify-center items-center flex-col gap-4">
+              <p className="font-sora font-bold text-sm text-[#D7D7D7] bg-[#034C8C] p-2 rounded-full">
+                Seu Link está pronto para ser copiado
+              </p>
+              <p className="font-ramabhadra font-bold text-lg text-[#BF2C0B]">
+                www.localhost:3000/redirect?link={shortUrl.shortUrl}
+              </p>
+            </div>
+          )}
         </div>
         <div className="relative w-[80vh] h-[80vh]">
           <Image src={woman} alt="woman" fill style={{ objectFit: "cover" }} />

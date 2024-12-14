@@ -1,6 +1,6 @@
 export interface IpostData {
     url: string 
-    password: number | null
+    password: string 
 }
 
 export interface IShortLinkResponse {
@@ -16,7 +16,7 @@ export interface IGetShortLinkResponse {
 
 export interface IPostUnlockPassword {
     shortUrl: string,
-    password: number
+    password: string
 }
 
 export interface IResponseUnlockPassword {
@@ -35,4 +35,5 @@ export interface IResponseInfoLink {
     shortUrl: string,
     clicks: number,
     createdAt: string
+    message: string
 }

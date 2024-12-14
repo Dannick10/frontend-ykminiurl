@@ -19,6 +19,6 @@ export const postUnlockURLpasswrodendpoint = async (body: IPostUnlockPassword): 
 }
 
 export const postInfoURLendpoint = async (body: IPostInfoLink): Promise<IResponseInfoLink> => {
-        const result = await apiService<IResponseInfoLink>("http://localhost:8081/api/password", "POST", body)
+        const result = await apiService<IResponseInfoLink>("http://localhost:8081/api/info", "POST", body)
         return result
 }
