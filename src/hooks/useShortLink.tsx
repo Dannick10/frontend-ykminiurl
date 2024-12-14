@@ -60,6 +60,7 @@ const useShortLink = () => {
 
   const handleError = (error: unknown) => {
     if (error instanceof Error) {
+      console.log(error)
       setMessage("error", error.message, "red", true);
     } else {
       setMessage("error", "Ocorreu um erro desconhecido.", "red", true);

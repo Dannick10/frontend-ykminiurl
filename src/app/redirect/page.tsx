@@ -42,9 +42,7 @@ const Redirect = () => {
       const { security, url } = shortUrl;
       if (!security && url) {
        router.push(url)
-      } else if (!url) {
-        console.error("URL inválida ou vazia.");
-      }
+      } 
     }
   }, [shortUrl]);
 
