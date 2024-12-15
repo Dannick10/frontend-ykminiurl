@@ -80,12 +80,12 @@ const page = () => {
 
       <aside className="flex justify-center items-center flex-wrap">
         <div className="flex flex-col justify-center items-center gap-2 max-w-[600px]">
-          <div className="space-y-2">
-            <h1 className="text-[32px] text-[rgb(3,76,140)] font-bold ">
+          <div className="space-y-2 text-center lg:text-left px-8 md:px-0">
+            <h1 className="text-[24px] md:text-[32px] text-[rgb(3,76,140)] font-bold ">
               Deseja ter informações do seu{" "}
               <span className="text-[#BF2C0B]">link</span> ?
             </h1>
-            <p className="font-light text-[24px] text-[#0A0A0D] font-sora">
+            <p className="font-light text-[18px] md:text-[24px] text-[#0A0A0D] font-sora">
               cole seu link encurtado, digite a senha se o link estiver com
               segurança.
             </p>

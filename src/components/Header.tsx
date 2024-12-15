@@ -2,6 +2,7 @@ import React from 'react'
 import Image from 'next/image'
 import logo from '/public/logo.svg'
 import Link from 'next/link'
+import ButtonHamburguer from './ButtonHamburguer'
 
 type navProps  = {
     name: string,
@@ -35,13 +36,14 @@ const Header = () => {
     </h3>
         </div>
 
-    <ul className='flex justify-center items-center gap-10 text-[24px] font-light '>
+    <ul className='justify-center items-center md:gap-4 lg:gap-10 text-[24px] font-light  hidden md:flex'>
         {navItems.map((items,i) => (
             <Link href={items.url} key={i}>
                 <li>{items.name}</li>
             </Link>
         ))}
     </ul>
+    <ButtonHamburguer items={navItems} />
     </aside>
   )
 }

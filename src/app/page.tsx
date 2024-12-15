@@ -64,14 +64,14 @@ export default function Home() {
         </div>
       )}
 
-      <aside className="flex justify-center items-center flex-wrap">
+      <aside className="flex justify-center items-center flex-wrap gap-10 lg:gap-0">
         <div className="flex flex-col justify-center items-center gap-2 max-w-[600px]">
-          <div className="space-y-2">
-            <h1 className="text-[32px] text-[rgb(3,76,140)] font-bold ">
+          <div className="space-y-2 text-center lg:text-left px-8 md:px-0">
+            <h1 className="text-[24px] md:text-[32px] text-[rgb(3,76,140)] font-bold ">
               Intuitivo e fácil, <span className="text-[#BF2C0B]">encurte</span>{" "}
               sua url e <span className="text-[#BF2C0B]">compartilhe</span> !
             </h1>
-            <p className="font-light text-[24px] text-[#0A0A0D] font-sora">
+            <p className="font-light text-[18px] md:text-[24px] text-[#0A0A0D] font-sora">
               tenha informações da sua url, quantas pessoas acessou e data que
               foi criada.
             </p>
