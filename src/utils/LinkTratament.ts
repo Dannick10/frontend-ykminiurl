@@ -1,4 +1,4 @@
-export default function UtilsLinkTratament(link) {
+export default function UtilsLinkTratament(link:string): string {
   const regex = /^(http:\/\/|https:\/\/|ftp:\/\/)/;
 
   if (!regex.test(link)) {

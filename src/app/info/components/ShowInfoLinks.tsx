@@ -1,19 +1,25 @@
 import { IResponseInfoLink } from "@/interfaces/LinkInterfaces";
-import React from "react";
+import React, { useState } from "react";
 import woman from "/public/woman.svg";
 import Image from "next/image";
 import Alert from "@/components/Alert";
 import useShortLink from "@/hooks/useShortLink";
 import { BiSolidPointer } from "react-icons/bi";
+import Link from "next/link";
+import { formatRelativeTime } from "@/utils/DateConvert";
 type Showinfo = {
-  url: string;
-  ShortUrl: string;
-  clicks: number;
-  Date: string;
+  url: string | undefined;
+  ShortUrl: string | undefined;
+  clicks:  number | undefined;
+  date:  string | undefined;
 };
 
-const ShowInfoLinks = ({ url, ShortUrl, clicks, Date }: Showinfo) => {
+const ShowInfoLinks = ({ url, ShortUrl, clicks, date }: Showinfo) => {
   const { msg, Setmsg, loading } = useShortLink();
+  const [dateFormat, SetDateFormat] = useState(formatRelativeTime(date))
+    console.log(dateFormat)
+
+
 
   return (
     <section className="flex flex-col gap-30 px-30 py-10">
@@ -53,7 +59,7 @@ const ShowInfoLinks = ({ url, ShortUrl, clicks, Date }: Showinfo) => {
 
       <aside className="flex justify-center items-center flex-wrap">
         <div className="flex flex-col justify-center items-center gap-2 max-w-[600px]">
-          <div className="space-y-2 flex flex-col items-center justify-center">
+          <div className="space-y-10 flex flex-col items-center justify-center">
                 <div className="flex items-center justify-center text-8xl gap-4 text-[32px] text-[#BF2C0B] font-bold ">
                 <span>
                     <BiSolidPointer />
@@ -61,9 +67,18 @@ const ShowInfoLinks = ({ url, ShortUrl, clicks, Date }: Showinfo) => {
 
                 <p> {clicks} Clicks</p>
                 </div>
-                <p className="font-light text-[24px] text-[#0A0A0D] font-sora">
-                criado há 3 dias atrás
+                <p className="font-sora text-[#034C8C] font-light text-[24px]">
+                {dateFormat}
                 </p>
+                <Link
+                 href={url || ""}
+                >
+                <button
+                className="font-poppins flex justify-center items-center px-[13px] py-1 rounded-[24px] border-[1px] bg-[#034C8C] text-[#D7D7D7]"
+                >
+               Acessar Link
+              </button>
+                </Link>
             </div>
         </div>
         <div className="relative w-[80vh] h-[80vh]">

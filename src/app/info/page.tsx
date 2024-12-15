@@ -31,8 +31,15 @@ const page = () => {
     Setmsg,
   } = useShortLink();
 
-  if(true) {
-    return <ShowInfoLinks url="www.com" ShortUrl="ebfc" clicks={5} Date={"Date.now()"} />
+  if (shortUrl) {
+    return (
+      <ShowInfoLinks
+        url={shortUrl?.url}
+        ShortUrl={shortUrl?.shortUrl}
+        clicks={shortUrl?.clicks}
+        date={shortUrl?.createdAt}
+      />
+    );
   }
 
   return (
@@ -102,11 +109,11 @@ const page = () => {
                   className="w-[20%] right-0 top-0 flex justify-center items-center px-[13px] py-1 rounded-[24px] border-[1px]  text-[#BF2C0B] cursor-pointer"
                   onClick={handleChangeVisibility}
                 >
-                  {changeVisiblity == "text" ? 
-                  <MdOutlineVisibility />
-                  : 
-                  <MdVisibilityOff />
-                }
+                  {changeVisiblity == "text" ? (
+                    <MdOutlineVisibility />
+                  ) : (
+                    <MdVisibilityOff />
+                  )}
                 </button>
               </Inputs>
             )}
