@@ -8,7 +8,7 @@ import Link from "next/link";
 import Alert from "@/components/Alert";
 import Inputs from "@/components/Inputs";
 import usePassword from "@/hooks/usePassword";
-
+import { motion } from "framer-motion"
 
 const Redirect = () => {
   const {

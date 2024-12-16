@@ -5,9 +5,10 @@ import woman from "/public/woman.svg";
 import usePassword from "@/hooks/usePassword";
 import Alert from "@/components/Alert";
 import useShortLink from "@/hooks/useShortLink";
-import { useEffect } from "react";
 import Inputs from "@/components/Inputs";
 import { MdOutlineVisibility, MdVisibilityOff } from "react-icons/md";
+import { motion } from "framer-motion";
+
 import { IoSearch } from "react-icons/io5";
 export default function Home() {
   const {
@@ -78,12 +79,22 @@ export default function Home() {
           </div>
           <div className="flex flex-col justify-center items-center py-38 gap-5  mt-9 ">
             <div className="flex-1 w-full">
-              <button
+              <motion.button
+                whileHover={{
+                  background: "#BF2C0B",
+                  color: "white",
+                  boxShadow: "1px 1px 10px #BF2C0B",
+                  scale: [1, 1.2, 1],
+                }}
+                whileTap={{
+                  scale: [1, 0.8, 1],
+                }}
+                transition={{ duration: 0.5 }}
                 className="flex  justify-center items-center px-[13px] py-1 rounded-[24px] border-[1px] border-[#BF2C0B] text-[#BF2C0B]"
                 onClick={handleVisibilityPassword}
               >
                 adicionar senha
-              </button>
+              </motion.button>
             </div>
             {viewPassword && (
               <Inputs
@@ -105,12 +116,14 @@ export default function Home() {
             )}
 
             <Inputs value={url} onChange={(e) => Seturl(e.target.value)}>
-              <button
+              <motion.button
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
                 className="w-[30%] right-0 top-0 flex justify-center items-center px-[13px] py-1 rounded-[24px] border-[1px] bg-[#034C8C] text-[#D7D7D7]"
                 onClick={createShortLink}
               >
                 <IoSearch />
-              </button>
+              </motion.button>
             </Inputs>
           </div>
           {shortUrl && (

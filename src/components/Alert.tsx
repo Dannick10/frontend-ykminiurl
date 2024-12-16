@@ -1,6 +1,7 @@
 import { twMerge } from "tailwind-merge";
 import clsx from "clsx";
 import { IoMdClose } from "react-icons/io";
+import { motion } from "framer-motion"
 interface AlertProps {
   title: string;
   subtitle: string;
@@ -33,7 +34,11 @@ const Alert = ({ title, subtitle, colors,handleCloseMsg }: AlertProps) => {
   const colorsApplied = colorMap[colors];
 
   return (
-    <div
+    <motion.div
+       initial={{y: "-100px"}}
+       animate={{y: 0}}
+       exit={{y: "-100px"}}
+       transition={{type: "spring", duration: 0.5}}
       className={twMerge(
         clsx(
           colorsApplied.bg,
@@ -41,13 +46,17 @@ const Alert = ({ title, subtitle, colors,handleCloseMsg }: AlertProps) => {
           colorsApplied.text,
           "border-t-4",
           "rounded-b",
+          "fixed",
+          "w-full",
+          "top-0",
           "px-4",
           "py-3",
+          "z-30",
           "shadow-md",
-          "relative"
         )
       )}
       role="alert"
+    
     >
       <div className="flex">
         <div className="py-1">
@@ -77,7 +86,7 @@ const Alert = ({ title, subtitle, colors,handleCloseMsg }: AlertProps) => {
 
             </div>
 
-    </div>
+    </motion.div>
   );
 };
 

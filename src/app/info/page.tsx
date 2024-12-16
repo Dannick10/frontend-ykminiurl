@@ -11,6 +11,7 @@ import { MdOutlineVisibility } from "react-icons/md";
 import { MdVisibilityOff } from "react-icons/md";
 import Inputs from "@/components/Inputs";
 import ShowInfoLinks from "./components/ShowInfoLinks";
+import { motion } from "framer-motion"
 
 const page = () => {
   const {
@@ -92,12 +93,21 @@ const page = () => {
           </div>
           <div className="flex flex-col justify-center items-center py-38 gap-5  mt-9 ">
             <div className="flex-1 w-full">
-              <button
+              <motion.button
+              whileHover={{
+                background: "#BF2C0B",
+                color: "white",
+                boxShadow: "1px 1px 10px #BF2C0B",
+                scale: [1, 1.2, 1] 
+              }}         
+              whileTap={{
+                scale: [1, .8, 1]
+              }}
                 className="flex  justify-center items-center px-[13px] py-1 rounded-[24px] border-[1px] border-[#BF2C0B] text-[#BF2C0B]"
                 onClick={handleVisibilityPassword}
               >
                 adicionar senha
-              </button>
+              </motion.button>
             </div>
             {viewPassword && (
               <Inputs
@@ -119,12 +129,14 @@ const page = () => {
             )}
 
             <Inputs value={url} onChange={(e) => Seturl(e.target.value)}>
-              <button
+              <motion.button
+               whileHover={{ scale: 1.1 }}
+               whileTap={{ scale: 0.9 }}
                 className="w-[30%] right-0 top-0 flex justify-center items-center px-[13px] py-1 rounded-[24px] border-[1px] bg-[#034C8C] text-[#D7D7D7]"
                 onClick={postInfoLink}
               >
                 <IoSearch />
-              </button>
+              </motion.button>
             </Inputs>
           </div>
         </div>
