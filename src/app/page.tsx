@@ -137,7 +137,7 @@ export default function Home() {
                 Seu Link está pronto para ser copiado
               </p>
               <p className="font-ramabhadra font-bold text-lg text-[#BF2C0B]">
-              http://www.ykminiurl.vercel.app/redirect?link={shortUrl.shortUrl}
+              https://ykminiurl.vercel.app/redirect?link={shortUrl.shortUrl}
               </p>
             </div>
           )}

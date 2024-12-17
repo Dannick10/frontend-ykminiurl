@@ -69,7 +69,7 @@ const ShowInfoLinks = ({ ShortUrl, clicks, date }: Showinfo) => {
               {dateFormat}
             </p>
             <Link
-              href={`http://www.ykminiurl.vercel.app/?link=${ShortUrl}` || ""}
+              href={`https://ykminiurl.vercel.app/redirect?link=${ShortUrl}`|| ""}
             >
               <motion.button
                 whileHover={{ scale: 1.1 }}
