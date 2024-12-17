@@ -1,9 +1,13 @@
 export const apiService = async <T>(
   url: string,
   method: string = "GET",
-  body: any = null
+  body: unknown = null
 ): Promise<T> => {
-  const response = await fetch(url, {
+
+  const baseURL = process.env.NEXT_PUBLIC_API;
+
+
+  const response = await fetch(`${baseURL}${url}`, {
     method,
     headers: {
       "Content-Type": "application/json",

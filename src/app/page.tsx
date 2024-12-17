@@ -1,5 +1,4 @@
 "use client";
-
 import Image from "next/image";
 import woman from "/public/woman.svg";
 import usePassword from "@/hooks/usePassword";
@@ -10,6 +9,7 @@ import { MdOutlineVisibility, MdVisibilityOff } from "react-icons/md";
 import { motion } from "framer-motion";
 
 import { IoSearch } from "react-icons/io5";
+
 export default function Home() {
   const {
     viewPassword,
@@ -36,7 +36,12 @@ export default function Home() {
           title={msg.title}
           subtitle={msg.subtitle}
           colors={msg.color}
-          handleCloseMsg={() => Setmsg("")}
+          handleCloseMsg={() => Setmsg({
+            title: "",
+            subtitle: "",
+            color: "green",
+            status: false,
+          })}
         />
       )}
 
@@ -132,7 +137,7 @@ export default function Home() {
                 Seu Link está pronto para ser copiado
               </p>
               <p className="font-ramabhadra font-bold text-lg text-[#BF2C0B]">
-                www.localhost:3000/redirect?link={shortUrl.shortUrl}
+              http://www.ykminiurl.vercel.app/redirect?link={shortUrl.shortUrl}
               </p>
             </div>
           )}

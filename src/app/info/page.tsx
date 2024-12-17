@@ -13,7 +13,7 @@ import Inputs from "@/components/Inputs";
 import ShowInfoLinks from "./components/ShowInfoLinks";
 import { motion } from "framer-motion"
 
-const page = () => {
+const Page = () => {
   const {
     handleVisibilityPassword,
     viewPassword,
@@ -35,7 +35,6 @@ const page = () => {
   if (shortUrl) {
     return (
       <ShowInfoLinks
-        url={shortUrl?.url}
         ShortUrl={shortUrl?.shortUrl}
         clicks={shortUrl?.clicks}
         date={shortUrl?.createdAt}
@@ -50,7 +49,12 @@ const page = () => {
           title={msg.title}
           subtitle={msg.subtitle}
           colors={msg.color}
-          handleCloseMsg={() => Setmsg("")}
+          handleCloseMsg={() => Setmsg({
+            title: "",
+            subtitle: "",
+            color: "green",
+            status: false,
+          })}
         />
       )}
 
@@ -153,4 +157,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

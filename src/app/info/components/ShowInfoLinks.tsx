@@ -6,17 +6,16 @@ import useShortLink from "@/hooks/useShortLink";
 import { BiSolidPointer } from "react-icons/bi";
 import Link from "next/link";
 import { formatRelativeTime } from "@/utils/DateConvert";
-import { motion } from "framer-motion"
+import { motion } from "framer-motion";
 type Showinfo = {
-  url: string | undefined;
   ShortUrl: string | undefined;
-  clicks:  number | undefined;
-  date:  string | undefined;
+  clicks: number | undefined;
+  date: string | undefined;
 };
 
-const ShowInfoLinks = ({ url, ShortUrl, clicks, date }: Showinfo) => {
+const ShowInfoLinks = ({ ShortUrl, clicks, date }: Showinfo) => {
   const { msg, Setmsg, loading } = useShortLink();
-  const [dateFormat] = useState(formatRelativeTime(date))
+  const [dateFormat] = useState(formatRelativeTime(date));
 
   return (
     <section className="flex flex-col gap-30 px-30 py-10">
@@ -25,7 +24,9 @@ const ShowInfoLinks = ({ url, ShortUrl, clicks, date }: Showinfo) => {
           title={msg.title}
           subtitle={msg.subtitle}
           colors={msg.color}
-          handleCloseMsg={() => Setmsg("")}
+          handleCloseMsg={() =>
+            Setmsg({ title: "", subtitle: "", color: "green", status: false })
+          }
         />
       )}
 
@@ -57,32 +58,31 @@ const ShowInfoLinks = ({ url, ShortUrl, clicks, date }: Showinfo) => {
       <aside className="flex justify-center items-center flex-wrap gap-8 lg:gap-10 py-8">
         <div className="flex flex-col justify-center items-center gap-2 max-w-[600px]">
           <div className="space-y-10 flex flex-col items-center justify-center">
-                <div className="flex items-center justify-center text-8xl gap-4 text-[32px] text-[#BF2C0B] font-bold ">
-                <span>
-                    <BiSolidPointer />
-                </span>
+            <div className="flex items-center justify-center text-8xl gap-4 text-[32px] text-[#BF2C0B] font-bold ">
+              <span>
+                <BiSolidPointer />
+              </span>
 
-                <p> {clicks} Clicks</p>
-                </div>
-                <p className="font-sora text-[#034C8C] font-light text-[24px]">
-                {dateFormat}
-                </p>
-                <Link
-                 href={`http://localhost:3000/redirect?link=${ShortUrl}` || ""}
-                >
-                <motion.button
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.9 }}
-                className="font-poppins flex justify-center items-center px-[13px] py-1 rounded-[24px] border-[1px] bg-[#034C8C] text-[#D7D7D7]"
-                >
-               Acessar Link
-              </motion.button>
-                </Link>
+              <p> {clicks} Clicks</p>
             </div>
+            <p className="font-sora text-[#034C8C] font-light text-[24px]">
+              {dateFormat}
+            </p>
+            <Link
+              href={`http://www.ykminiurl.vercel.app/?link=${ShortUrl}` || ""}
+            >
+              <motion.button
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                className="font-poppins flex justify-center items-center px-[13px] py-1 rounded-[24px] border-[1px] bg-[#034C8C] text-[#D7D7D7]"
+              >
+                Acessar Link
+              </motion.button>
+            </Link>
+          </div>
         </div>
-        <div className="relative w-[80vh] h-[80vh]"> 
-          <Image     
-          src={woman} alt="woman" fill style={{ objectFit: "cover" }} />
+        <div className="relative w-[80vh] h-[80vh]">
+          <Image src={woman} alt="woman" fill style={{ objectFit: "cover" }} />
         </div>
       </aside>
     </section>

@@ -13,18 +13,7 @@ import {
   IpostData,
 } from "@/interfaces/LinkInterfaces";
 import linkTratament from "@/utils/LinkTratament";
-import { error } from "console";
 
-type errorObject = {
-  message: string;
-};
-
-type msg = {
-  title: string;
-  subtitle: string;
-  colors: string;
-  status: boolean;
-} | null;
 
 type getUrl = {
   originalUrl?: string;
@@ -34,6 +23,14 @@ type getUrl = {
   url?: string;
   security?: boolean;
 };
+
+interface MsgType {
+  title: string;
+  subtitle: string;
+  color: "red" | "yellow" | "green";
+  status: boolean;
+}
+
 const useShortLink = () => {
   const [url, Seturl] = useState<string>("");
 
@@ -41,10 +38,10 @@ const useShortLink = () => {
 
   const [shortUrl, SetshortURL] = useState<getUrl | null>();
 
-  const [msg, Setmsg] = useState<any>({
+  const [msg, Setmsg] = useState<MsgType>({
     title: "",
     subtitle: "",
-    color: "",
+    color: "green",
     status: false,
   });
   const [loading, SetLoading] = useState<boolean>(false);
@@ -52,7 +49,7 @@ const useShortLink = () => {
   const setMessage = (
     title: string,
     subtitle: string,
-    color: string,
+    color: "red" | "yellow" | "green",
     status: boolean
   ) => {
     Setmsg({ title, subtitle, color, status });
@@ -79,7 +76,7 @@ const useShortLink = () => {
   useEffect(() => {
     if (msg?.status) {
       const timeout = setTimeout(() => {
-        Setmsg({ title: "", subtitle: "", color: "", status: false });
+        Setmsg({ title: "", subtitle: "", color: "green", status: false });
       }, 8000);
       return () => clearTimeout(timeout);
     }
@@ -178,9 +175,9 @@ const useShortLink = () => {
       return;
     }
 
-    let regexUrl = /link=([^&]+)/;
-    let match = url.match(regexUrl);
-    let result = match ? match[1] : "";
+    const regexUrl = /link=([^&]+)/;
+    const match = url.match(regexUrl);
+    const result = match ? match[1] : "";
 
     const postInfoData: IPostInfoLink = {
       shortUrl: result,
