@@ -3,8 +3,11 @@ import { IoIosArrowUp } from "react-icons/io";
 import { IoIosArrowDown } from "react-icons/io";
 import { motion } from "framer-motion";
 
+type Endpoint = {
+  exampleRequest: string;
+}
 type EndpointsTypes = {
-  msg: (endpoint: any) => void
+  msg: (endpoint: Endpoint) => void
 }
 
 const Endpoints = ({msg}: EndpointsTypes) => {
@@ -62,7 +65,7 @@ const Endpoints = ({msg}: EndpointsTypes) => {
                       }}
                       transition={{ duration: 0.5 }}
                       className="flex  justify-center items-center px-[18px] py-1 rounded-[24px] border-[1px]  bg-orange-600 text-white m-4"
-                      onClick={() =>msg(endpoint.exampleRequest)}
+                      onClick={() => msg(endpoint)}
                       >
                       Copiar
                     </motion.button>
