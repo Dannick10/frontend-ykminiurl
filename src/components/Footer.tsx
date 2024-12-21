@@ -3,7 +3,8 @@ import { FaLinkedin } from "react-icons/fa6";
 import React from "react";
 import Link from "next/link";
 const Footer = () => {
-  let listsLink = [
+  
+  const listsLink = [
     {
       title: "YKminiurl",
       links: [
