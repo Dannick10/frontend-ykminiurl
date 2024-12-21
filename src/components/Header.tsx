@@ -26,7 +26,7 @@ const Header = () => {
   ];
 
   return (
-    <aside className="fixed  w-full z-10 bg-white flex justify-between px-10 items-center gap-2 font-sora">
+    <aside className="fixed  w-full z-10 bg-white flex justify-between px-10 items-center gap-2 font-sora border-b-2 border-gray-100">
       <div className="flex gap-2">
         <Image src={logo} alt="logo" width={50} height={50} />
         <h3 className="text-[40px] text-[#034C8C] font-bold">
@@ -34,7 +34,7 @@ const Header = () => {
         </h3>
       </div>
 
-      <ul className="justify-center items-center md:gap-4 lg:gap-10 text-[24px] font-light  hidden md:flex">
+      <ul className="justify-center items-center md:gap-4 lg:gap-10 text-xl font-light  hidden md:flex">
         {navItems.map((items, i) => (
             <Link href={items.url} key={i}>
           <li>

@@ -64,15 +64,15 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="px-[30px] py-[20px] flex justify-between border-t-2 border-gray-200">
+    <footer className="px-[30px] py-[20px] flex flex-col-reverse  lg:flex-row items-center lg:items-stretch gap-8 justify-between border-t-2 border-gray-200">
       <div className="flex items-center">
-         <ul className="flex gap-2 text-2xl">
-            <li className="cursor-pointer hover:text-blue-800"><FaGithub/></li>
-            <li className="cursor-pointer hover:text-gray-800"><FaLinkedin/></li>
+         <ul className="flex gap-2 py-4">
+            <li className="cursor-pointer hover:text-blue-800 text-3xl"><FaGithub/></li>
+            <li className="cursor-pointer hover:text-gray-800 text-3xl"><FaLinkedin/></li>
          </ul>
       </div>
 
-        <div className="flex gap-10 text-sm">
+        <div className="grid grid-cols-2 md:flex justify-center md:flex-row gap-10 text-sm">
             {listsLink.map((list, index) => (
             <div key={index} className="flex flex-col ml-[20px]">
                 <h2 className="font-bold py-4 text-base text-orange-600">{list.title}</h2>
@@ -87,7 +87,7 @@ const Footer = () => {
         ))}
       </div>
 
-      <div className="flex justify-end items-end font-bold text-sm text-orange-600">
+      <div className="flex justify-end items-end font-bold text-sm text-orange-600 pt-2">
         <p>2024 YKMiniURL. Todos os direitos reservados.</p>
       </div>
     </footer>

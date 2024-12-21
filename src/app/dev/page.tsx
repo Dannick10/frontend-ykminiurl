@@ -54,7 +54,9 @@ const Page = () => {
 
       <main className="w-full py-8 min-h-80 flex justify-center flex-col items-center gap-8">
         <section className="flex items-center gap-2">
-          <Image src={logo} width={125} height={125} alt="logo" />
+          <div className="w-[90px] h-[90px] md:w-[125px] md:h-[125px] relative">
+          <Image src={logo} fill className="object-fill" alt="logo" />
+          </div>
           <div className="flex gap-2 flex-col justify-center items-center">
             <h1 className="text-5xl font-bold text-gray-950">Introdução</h1>
             <p className="text-xl text-gray-600">api da ykminiurl</p>
@@ -116,7 +118,7 @@ const Page = () => {
         <article
           id="accordion-collapse"
           data-accordion="collapse"
-          className="w-full space-y-8 max-w-[640px] px-10 md:px-0"
+          className="w-full space-y-8 max-w-[640px] px-10 md:px-0 overflow-hidden"
         >
           <Endpoints msg={(endpoint) => { 
             copyToClipboard(endpoint.exampleRequest)
