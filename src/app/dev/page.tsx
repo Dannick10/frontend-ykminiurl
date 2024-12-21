@@ -116,7 +116,7 @@ const Page = () => {
         <article
           id="accordion-collapse"
           data-accordion="collapse"
-          className="w-full space-y-8 max-w-[640px] px-10 md:px-0"
+          className="w-full space-y-8 max-w-[640px] px-10 md:px-0 overflow-hidden"
         >
           <Endpoints msg={(endpoint) => { 
             copyToClipboard(endpoint.exampleRequest)
