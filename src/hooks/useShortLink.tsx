@@ -74,10 +74,11 @@ const useShortLink = () => {
   };
 
   useEffect(() => {
+    const time = 3000
     if (msg?.status) {
       const timeout = setTimeout(() => {
         Setmsg({ title: "", subtitle: "", color: "green", status: false });
-      }, 8000);
+      }, time);
       return () => clearTimeout(timeout);
     }
   }, [msg]);
@@ -223,6 +224,7 @@ const useShortLink = () => {
     password,
     Setpassword,
     Setmsg,
+    setMessage
   };
 };
 
