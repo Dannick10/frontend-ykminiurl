@@ -21,7 +21,7 @@ const Header = () => {
     },
     {
       name: "Desenvolvedores",
-      url: "/desenvolvedor",
+      url: "/dev",
     },
   ];
 

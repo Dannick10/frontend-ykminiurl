@@ -74,7 +74,7 @@ const useShortLink = () => {
   };
 
   useEffect(() => {
-    let time = 3000
+    const time = 3000
     if (msg?.status) {
       const timeout = setTimeout(() => {
         Setmsg({ title: "", subtitle: "", color: "green", status: false });

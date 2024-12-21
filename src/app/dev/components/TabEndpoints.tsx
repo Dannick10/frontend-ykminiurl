@@ -1,46 +1,26 @@
-import Alert from "@/components/Alert";
-import useShortLink from "@/hooks/useShortLink";
-import { copyToClipboard } from "@/utils/copyBoard";
 import { endpointsData } from "@/app/dev/data/EndpointsViews";
 import { IoIosArrowUp } from "react-icons/io";
 import { IoIosArrowDown } from "react-icons/io";
 import { motion } from "framer-motion";
 
-const Endpoints = () => {
-  const { setMessage, msg, Setmsg } = useShortLink();
-  
+type EndpointsTypes = {
+  msg: (endpoint: any) => void
+}
 
+const Endpoints = ({msg}: EndpointsTypes) => {
   return (
     <>
-      {msg.status && (
-        <div className="fixed top-0 z-20">
-          <Alert
-            title={msg.title}
-            subtitle={msg.subtitle}
-            colors={msg.color}
-            handleCloseMsg={() =>
-              Setmsg({
-                title: "",
-                subtitle: "",
-                color: "green",
-                status: false,
-              })
-            }
-          />
-        </div>
-      )}
-
-      <div className="px-10">
+      <div className="space-y-4">
         {endpointsData.map((endpoint, index) => (
           <div
             key={index}
             tabIndex={index}
-            className={`group  border-t-2 rounded-[8px] ${endpoint.colors}`}
+            className={`group  border-2 rounded-[8px] text-sm`}
           >
-            <div className="w-full flex justify-between p-4 bg-gray-100 cursor-pointer">
-              <h2 className="text-xl font-bold flex-1 ">{endpoint.title}</h2>
-              <div className="text-blue-600">
-                <span className="invisible text-blue-400 group-focus:visible">
+            <div className="w-full flex items-center justify-between p-4 bg-gray-100 cursor-pointer select-none">
+              <h2 className="text-lg font-bold flex-1 ">{endpoint.title}</h2>
+              <div className="text-orange-600">
+                <span className="invisible text-orange-400 group-focus:visible">
                   <IoIosArrowUp />
                 </span>
                 <span className="visible group-focus:invisible">
@@ -57,7 +37,7 @@ const Endpoints = () => {
                 </p>
                 {endpoint.params && (
                   <p className="bg-gray-100 p-4 rounded">
-                    <span className="font-semibold ">Parameters:</span>{" "}
+                    <span className="font-semibold">Parameters:</span>{" "}
                     {endpoint.params}
                   </p>
                 )}
@@ -81,16 +61,8 @@ const Endpoints = () => {
                         scale: [1, 0.8, 1],
                       }}
                       transition={{ duration: 0.5 }}
-                      className="flex  justify-center items-center px-[18px] py-1 rounded-[24px] border-[1px]  bg-[#034c8c] text-white m-4"
-                      onClick={() => {
-                        copyToClipboard(endpoint.exampleRequest)
-                        setMessage(
-                          "sucesso",
-                          "o arquivo JSON foi enviado para sua area de transferencia",
-                          "green",
-                          true
-                        );   
-                      }}
+                      className="flex  justify-center items-center px-[18px] py-1 rounded-[24px] border-[1px]  bg-orange-600 text-white m-4"
+                      onClick={() =>msg(endpoint.exampleRequest)}
                       >
                       Copiar
                     </motion.button>
