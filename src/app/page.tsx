@@ -71,7 +71,7 @@ export default function Home() {
       {loading && (
         <div
           role="status"
-          className="w-full h-full absolute flex justify-center items-center bg-black bg-opacity-10 z-10"
+          className="w-full h-full fixed flex justify-center items-center bg-black bg-opacity-10 z-10"
         >
           <svg
             aria-hidden="true"
@@ -175,7 +175,7 @@ export default function Home() {
         </div>
       </aside>
 
-      <section className="px-12 md:px-28 flex flex-col  gap-10">
+      <section className="px-12 md:px-28 flex flex-col  gap-6">
           <h3 className="text-xl text-[rgb(3,76,140)] font-bold">O que você pode fazer com o YKMiniURL?</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 justify-center gap-4 ">
             <Cards/>
@@ -190,7 +190,7 @@ export default function Home() {
          </div>
       </section>
 
-      <section className="px-10 md:px-28 flex flex-col gap-10">
+      <section className="px-10 md:px-28 flex flex-col gap-4">
           <p className="text-xl font-bold text-gray-900">FAQ</p>
             <Arcodion dataBase={FAQdata} />
       </section>

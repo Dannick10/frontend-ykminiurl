@@ -40,7 +40,7 @@ const Footer = () => {
         },
         {
           text: "LinkedIn",
-          href: "https://www.linkedin.com/",
+          href: "https://www.linkedin.com/in/futurodevdaniel/",
         },
         {
           text: "Telefone",
@@ -71,8 +71,8 @@ const Footer = () => {
     <footer className="px-[30px] py-[20px] flex flex-col-reverse  lg:flex-row items-center lg:items-stretch gap-8 justify-between border-t-2 border-gray-200">
       <div className="flex items-center">
          <ul className="flex gap-2 py-4">
-            <li className="cursor-pointer hover:text-blue-800 text-3xl"><FaGithub/></li>
-            <li className="cursor-pointer hover:text-gray-800 text-3xl"><FaLinkedin/></li>
+            <li className="cursor-pointer hover:text-orange-600 text-3xl"><FaGithub/></li>
+            <li className="cursor-pointer hover:text-orange-600 text-3xl"><FaLinkedin/></li>
          </ul>
       </div>
 

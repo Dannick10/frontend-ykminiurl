@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import woman from "/public/woman.svg";
+import database from "/public/database.svg";
 import Image from "next/image";
 import Alert from "@/components/Alert";
 import useShortLink from "@/hooks/useShortLink";
@@ -55,7 +55,7 @@ const ShowInfoLinks = ({ ShortUrl, clicks, date }: Showinfo) => {
         </div>
       )}
 
-      <aside className="flex justify-center items-center flex-wrap gap-8 lg:gap-10 py-8">
+      <aside className="flex flex-col-reverse lg:flex-row justify-center items-center flex-wrap gap-8 lg:gap-10 py-8">
         <div className="flex flex-col justify-center items-center gap-2 max-w-[600px]">
           <div className="space-y-10 flex flex-col items-center justify-center">
             <div className="flex items-center justify-center text-8xl gap-4 text-[32px] text-[#BF2C0B] font-bold ">
@@ -81,9 +81,9 @@ const ShowInfoLinks = ({ ShortUrl, clicks, date }: Showinfo) => {
             </Link>
           </div>
         </div>
-        <div className="relative w-[80vh] h-[80vh]">
-          <Image src={woman} alt="woman" fill style={{ objectFit: "cover" }} />
-        </div>
+       
+          <Image src={database} alt="woman" width={400} height={300} />
+     
       </aside>
     </section>
   );

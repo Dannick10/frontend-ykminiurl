@@ -63,7 +63,7 @@ const Page = () => {
       {loading && (
         <div
           role="status"
-          className="w-full h-full absolute flex justify-center items-center bg-black bg-opacity-10 z-10"
+          className="w-full h-full fixed flex justify-center items-center bg-black bg-opacity-10 z-10"
         >
           <svg
             aria-hidden="true"
@@ -149,7 +149,7 @@ const Page = () => {
 
         <Image src={womanpoint} width={360} height={310} alt="a" />
       </aside>
-      <div className="px-16 lg:px-32 mt-8 text-gray-800 ">
+      <div className="px-4 text-center md:px-6 lg:text-start lg:px-32 mt-8 text-gray-800 ">
       <p className="">Suas informações são armazenadas com segurança e visíveis apenas para você. Se o link estiver protegido por senha, somente quem a possui poderá acessar os dados detalhados.</p>
       </div>
     </section>
