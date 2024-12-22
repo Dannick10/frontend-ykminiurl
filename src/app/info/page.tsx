@@ -5,13 +5,13 @@ import usePassword from "@/hooks/usePassword";
 import useShortLink from "@/hooks/useShortLink";
 import React from "react";
 import Image from "next/image";
-import womanpoint from "/public/womanpoint.svg";
+import womanpoint from "/public/womananalyse.svg";
 import { IoSearch } from "react-icons/io5";
 import { MdOutlineVisibility } from "react-icons/md";
 import { MdVisibilityOff } from "react-icons/md";
 import Inputs from "@/components/Inputs";
 import ShowInfoLinks from "./components/ShowInfoLinks";
-import { motion } from "framer-motion"
+import { motion } from "framer-motion";
 
 const Page = () => {
   const {
@@ -49,12 +49,14 @@ const Page = () => {
           title={msg.title}
           subtitle={msg.subtitle}
           colors={msg.color}
-          handleCloseMsg={() => Setmsg({
-            title: "",
-            subtitle: "",
-            color: "green",
-            status: false,
-          })}
+          handleCloseMsg={() =>
+            Setmsg({
+              title: "",
+              subtitle: "",
+              color: "green",
+              status: false,
+            })
+          }
         />
       )}
 
@@ -83,7 +85,7 @@ const Page = () => {
         </div>
       )}
 
-      <aside className="flex justify-center items-center flex-wrap">
+      <aside className="flex flex-col-reverse lg:flex-row justify-center items-center gap-8 lg:gap-28">
         <div className="flex flex-col justify-center items-center gap-2 max-w-[600px]">
           <div className="space-y-2 text-center lg:text-left px-8 md:px-0">
             <h1 className="text-[24px] md:text-[32px] text-[rgb(3,76,140)] font-bold ">
@@ -95,18 +97,18 @@ const Page = () => {
               segurança.
             </p>
           </div>
-          <div className="flex flex-col justify-center items-center py-38 gap-5  mt-9 ">
+          <div className="flex flex-col items-center py-38 gap-5  mt-9 ">
             <div className="flex-1 w-full">
               <motion.button
-              whileHover={{
-                background: "#BF2C0B",
-                color: "white",
-                boxShadow: "1px 1px 10px #BF2C0B",
-                scale: [1, 1.2, 1] 
-              }}         
-              whileTap={{
-                scale: [1, .8, 1]
-              }}
+                whileHover={{
+                  background: "#BF2C0B",
+                  color: "white",
+                  boxShadow: "1px 1px 10px #BF2C0B",
+                  scale: [1, 1.2, 1],
+                }}
+                whileTap={{
+                  scale: [1, 0.8, 1],
+                }}
                 className="flex  justify-center items-center px-[13px] py-1 rounded-[24px] border-[1px] border-[#BF2C0B] text-[#BF2C0B]"
                 onClick={handleVisibilityPassword}
               >
@@ -134,8 +136,8 @@ const Page = () => {
 
             <Inputs value={url} onChange={(e) => Seturl(e.target.value)}>
               <motion.button
-               whileHover={{ scale: 1.1 }}
-               whileTap={{ scale: 0.9 }}
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
                 className="w-[30%] right-0 top-0 flex justify-center items-center px-[13px] py-1 rounded-[24px] border-[1px] bg-[#034C8C] text-[#D7D7D7]"
                 onClick={postInfoLink}
               >
@@ -144,15 +146,12 @@ const Page = () => {
             </Inputs>
           </div>
         </div>
-        <div className="relative w-[80vh] h-[80vh]">
-          <Image
-            src={womanpoint}
-            alt="woman"
-            fill
-            style={{ objectFit: "cover" }}
-          />
-        </div>
+
+        <Image src={womanpoint} width={360} height={310} alt="a" />
       </aside>
+      <div className="px-16 lg:px-32 mt-8 text-gray-800 ">
+      <p className="">Suas informações são armazenadas com segurança e visíveis apenas para você. Se o link estiver protegido por senha, somente quem a possui poderá acessar os dados detalhados.</p>
+      </div>
     </section>
   );
 };

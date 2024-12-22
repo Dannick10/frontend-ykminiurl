@@ -33,7 +33,7 @@ const ButtonHamburguer = ({ items: NavItems }: ButtonHamburguerProps) => {
   return (
     <>
       <div
-        className="flex md:hidden z-20 flex-col gap-1 cursor-pointer"
+        className="flex md:hidden z-40 flex-col gap-1 cursor-pointer"
         onClick={hanldeChangeButton}
       >
         <span
