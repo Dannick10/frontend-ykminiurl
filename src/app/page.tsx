@@ -36,7 +36,7 @@ export default function Home() {
   const FAQdata = [
     {
       title: "O que é o YKMiniURL?",
-      subtitle: "torná-los mais fáceis de compartilhar."
+      subtitle: "é uma ferramenta online gratuita que permite transformar links longos em URLs curtas, fáceis de compartilhar e gerenciar. Além de encurtar links, o YKMiniURL oferece a opção de adicionar senhas aos links encurtados e informações detalhadas sobre o desempenho dos links."
     },
     {
       title: "Como faço para encurtar um link?",

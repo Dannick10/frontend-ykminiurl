@@ -71,8 +71,12 @@ const Footer = () => {
     <footer className="px-[30px] py-[20px] flex flex-col-reverse  lg:flex-row items-center lg:items-stretch gap-8 justify-between border-t-2 border-gray-200">
       <div className="flex items-center">
          <ul className="flex gap-2 py-4">
+          <Link href="https://github.com/Dannick10/frontend-ykminiurl" target="_blank">
             <li className="cursor-pointer hover:text-orange-600 text-3xl"><FaGithub/></li>
+          </Link>
+          <Link href="https://www.linkedin.com/in/futurodevdaniel/" target="_blank">
             <li className="cursor-pointer hover:text-orange-600 text-3xl"><FaLinkedin/></li>
+          </Link>
          </ul>
       </div>
 
