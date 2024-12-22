@@ -58,8 +58,8 @@ const ButtonHamburguer = ({ items: NavItems }: ButtonHamburguerProps) => {
           <span className="w-full h-full top-0 left-0 fixed bg-black bg-opacity-10 backdrop-blur-sm"
           onClick={hanldeChangeButton}
           ></span>
-          <div className="fixed top-0 right-0 border-l-2 border-[#BF2C0B] 0 bg-white text-white z-10 w-4/6 h-full">
-            <ul className="gap-6 flex flex-col text-[#BF2C0B] py-16">
+          <div className="fixed top-0 right-0 border-l-2 border-[#BF2C0B] 0 bg-white z-10 w-4/6 h-full">
+            <ul className="gap-6 flex flex-col text-gray-900 py-16">
               {NavItems.map((items, index) => (
                 <Link
                   className="relative"
@@ -67,9 +67,9 @@ const ButtonHamburguer = ({ items: NavItems }: ButtonHamburguerProps) => {
                   key={index}
                   onClick={hanldeChangeButton}
                 >
-                  <li className="relative group px-8 py-4  transition-colors duration-300 text-orange-500 hover:text-white text-xl ">
+                  <li className="relative hover:text-orange-600 group px-8 py-4  transition-colors duration-300 text-xl ">
                     {items.name}
-                    <span className="w-full h-10 left-0 text-orange-400 absolute bg-orange-500 opacity-0 transition-opacity duration-300 group-hover:opacity-100 -z-10"></span>
+                    
                   </li>
                 </Link>
               ))}

@@ -9,6 +9,9 @@ import { MdOutlineVisibility, MdVisibilityOff } from "react-icons/md";
 import { motion } from "framer-motion";
 
 import { IoSearch } from "react-icons/io5";
+import { copyToClipboard } from "@/utils/copyBoard";
+import Cards from "@/components/Cards";
+import Arcodion from "@/components/Arcodion";
 
 export default function Home() {
   const {
@@ -27,10 +30,30 @@ export default function Home() {
     shortUrl,
     Setpassword,
     Setmsg,
+    setMessage
   } = useShortLink();
 
+  const FAQdata = [
+    {
+      title: "O que é o YKMiniURL?",
+      subtitle: "torná-los mais fáceis de compartilhar."
+    },
+    {
+      title: "Como faço para encurtar um link?",
+      subtitle: "Para encurtar um link, basta colar o link longo na caixa de texto e clicar em 'Encurtar'."
+    },
+    {
+      title: "Como faço para adicionar uma senha ao meu link?",
+      subtitle: "Para adicionar uma senha ao seu link, basta clicar no botão 'Adicionar senha' e digitar a senha desejada."
+    },
+    {
+      title: "Como posso ter informações sobre o meu link?",
+      subtitle: "Para obter informações sobre o seu link, basta ir a página 'informações' e copiar seu link encurtado, digitar a senha, se houver."
+    }
+  ]
+
   return (
-    <section className="flex flex-col gap-30 px-30 py-10">
+    <section className="flex flex-col gap-28 px-30 py-20">
       {msg.status && (
         <Alert
           title={msg.title}
@@ -70,21 +93,19 @@ export default function Home() {
         </div>
       )}
 
-      <aside className="flex justify-center items-center flex-wrap gap-10 lg:gap-0">
-        <div className="flex flex-col justify-center items-center gap-2 max-w-[600px]">
+      <aside className="flex flex-col-reverse lg:flex-row gap-2 justify-between px-28 items-center md:gap-10 lg:gap-20">
+        <div className="flex flex-col justify-center items-center gap-2 ">
           <div className="space-y-2 text-center lg:text-left px-8 md:px-0">
-            <h1 className="text-[24px] md:text-[32px] text-[rgb(3,76,140)] font-bold ">
-              Intuitivo e fácil, <span className="text-[#BF2C0B]">encurte</span>{" "}
-              sua url e <span className="text-[#BF2C0B]">compartilhe</span> !
+            <h1 className="text-3xl md:text-4xl max-w-[448px] text-[rgb(3,76,140)] font-bold ">
+            Transforme links longos em URLs curtas e seguras em segundos! 
             </h1>
-            <p className="font-light text-[18px] md:text-[24px] text-[#0A0A0D] font-sora">
-              tenha informações da sua url, quantas pessoas acessou e data que
-              foi criada.
+            <p className="font-light text-lg md:text-xl text-[#0A0A0D] font-sora">
+             Compartilhar links nunca foi tão fácil e seguro.
             </p>
           </div>
-          <div className="flex flex-col justify-center items-center py-38 gap-5  mt-9 ">
+          <div className="flex flex-col justify-center items-center  gap-5  mt-9 ">
             <div className="flex-1 w-full">
-              <motion.button
+              <motion.button        
                 whileHover={{
                   background: "#BF2C0B",
                   color: "white",
@@ -133,19 +154,46 @@ export default function Home() {
           </div>
           {shortUrl && (
             <div className="mt-4 flex justify-center items-center flex-col gap-4">
-              <p className="font-sora font-bold text-sm text-[#D7D7D7] bg-[#034C8C] p-2 rounded-full">
+              <button className="font-sora font-bold text-sm text-[#D7D7D7] bg-[#034C8C] p-2 rounded-full"
+              onClick={() =>  
+                {
+                  setMessage("sucesso","Link copiado com sucesso","green",true)
+                  copyToClipboard(`https://ykminiurl.vercel.app/redirect?link=${shortUrl.shortUrl}`)
+                }
+              }
+              >
                 Seu Link está pronto para ser copiado
-              </p>
+              </button>
               <p className="font-ramabhadra font-bold text-lg text-[#BF2C0B]">
               https://ykminiurl.vercel.app/redirect?link={shortUrl.shortUrl}
               </p>
             </div>
           )}
         </div>
-        <div className="relative w-[80vh] h-[80vh]">
-          <Image src={woman} alt="woman" fill style={{ objectFit: "cover" }} />
+        <div className="relative w-[300px] h-[300px] md:w-[504px] md:h-[300px]">
+          <Image src={woman} alt="woman" fill style={{ objectFit: "contain" }} />
         </div>
       </aside>
+
+      <section className="px-12 md:px-28 flex flex-col  gap-10">
+          <h3 className="text-xl text-[rgb(3,76,140)] font-bold">O que você pode fazer com o YKMiniURL?</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 justify-center gap-4 ">
+            <Cards/>
+          </div>
+      </section>
+
+      <section className="flex flex-col justify-center items-center gap-4 min-h-[308px] bg-gradient-to-r  from-[#010A11] to-[#012C52] relative">
+         <h2 className="text-3xl md:text-4xl font-bold text-white">Comece Agora - <span className="text-[#FFAF40]">É Grátis!</span></h2>
+         <Image src={"/fire.svg"} alt="fire" width={192} height={192} />
+         <div className="absolute top-0 left-0 w-full h-full">
+         <Image src={"/brilh.svg"} alt="brilh" fill className="object-cover" />
+         </div>
+      </section>
+
+      <section className="px-10 md:px-28 flex flex-col gap-10">
+          <p className="text-xl font-bold text-gray-900">FAQ</p>
+            <Arcodion dataBase={FAQdata} />
+      </section>
     </section>
   );
 }

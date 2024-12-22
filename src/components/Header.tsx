@@ -37,7 +37,7 @@ const Header = () => {
       <ul className="justify-center items-center md:gap-4 lg:gap-10 text-xl font-light  hidden md:flex">
         {navItems.map((items, i) => (
             <Link href={items.url} key={i}>
-          <li>
+          <li className="hover:text-orange-600 duration-300">
               {items.name}
           </li>
             </Link>

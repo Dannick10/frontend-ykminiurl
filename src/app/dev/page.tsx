@@ -9,6 +9,7 @@ import { copyToClipboard } from "@/utils/copyBoard";
 import Arcodion from "@/components/Arcodion";
 import { motion } from "framer-motion" 
 import Link from "next/link";
+import { FaCopy } from "react-icons/fa";
 
 const Page = () => {
   const { setMessage, msg, Setmsg } = useShortLink();
@@ -112,6 +113,18 @@ const Page = () => {
                         SEGUIR PARA A DOC SWAGGER
                       </motion.button>
                 </Link>
+              </div>
+              <div className="flex gap-2 justify-center items-center bg-gray-600 text-gray-100 rounded">
+                <span className="border-r-2 border-gray-500 p-4 hover:bg-gray-700 cursor-pointer"
+                onClick={() =>{
+                copyToClipboard("https://backend-ykminiurl.onrender.com/")
+                  setMessage("sucesso", "o link foi copiado para sua area de transferencia", "green", true);
+              }
+                }>
+                  
+              <FaCopy/>
+                </span>
+              <p className="p-4">https://backend-ykminiurl.onrender.com/ </p>
               </div>
         </section>
 

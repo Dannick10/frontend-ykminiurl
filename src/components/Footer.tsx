@@ -9,6 +9,10 @@ const Footer = () => {
       title: "YKminiurl",
       links: [
         {
+          text: "inicio",
+          href: "/",
+        },
+        {
           text: "Informações",
           href: "/info",
         },
