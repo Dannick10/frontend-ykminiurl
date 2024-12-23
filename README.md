@@ -1,40 +1,78 @@
-<<<<<<< HEAD
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+![banner](https://github.com/user-attachments/assets/7285a6f5-035f-4aa3-907b-a5c1647a8bec)
 
-## Getting Started
+# 🌐 YKMiniURL
 
-First, run the development server:
+**Transforme links longos em URLs curtas e seguras em segundos!**  
+Compartilhar links nunca foi tão fácil e seguro.  
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🚀 **Sobre o Projeto**  
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+**YKMiniURL** é uma solução eficiente e gratuita para gerenciar e compartilhar links. Desenvolvido com tecnologias modernas, nosso serviço oferece:  
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **Encurtamento de Links Longos**: Torne seus links curtos e fáceis de compartilhar.  
+- **Proteção com Senha**: Adicione uma camada extra de segurança aos seus links.  
+- **Estatísticas Detalhadas**: Visualize dados sobre cliques, data de criação e desempenho dos seus links.  
+- **Redirecionamento Simples**: Acesse o link original com apenas um clique.  
 
-## Learn More
+### 🛠️ **Tecnologias Utilizadas**  
 
-To learn more about Next.js, take a look at the following resources:
+#### Frontend  
+- **Next.js**  
+- **TypeScript**  
+- **TailwindCSS**  
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+#### Backend  
+- **Node.js**  
+- **Express.js**  
+- **MongoDB**  
+- **Bcrypt**  
+- **CORS**
+- **Swagger**
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## 📚 **Documentação da API**  
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+A **YKMiniURL API** é interativa e documentada via **Swagger**, permitindo que você explore endpoints, parâmetros e execute testes diretamente na interface.  
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-=======
-# frontend-ykminiurl
->>>>>>> 9bbd1a9f9a274f5373a028ab64edabfff04cc6cd
+🔗 **Link da Documentação da API**:  
+
+[YKMiniURL API - Swagger](https://backend-ykminiurl.onrender.com/docs)  
+
+### **Como Começar**  
+1. Consulte os endpoints disponíveis na documentação Swagger.  
+2. Teste a API usando ferramentas como Postman ou cURL.  
+3. Integre o serviço no seu sistema para otimizar o gerenciamento de links.  
+
+---
+
+## 🎯 **Funcionalidades da API**  
+- **Criar Links Curtos**: Transforme URLs longas em links curtos.  
+- **Adicionar Senhas**: Defina uma senha para proteger o acesso aos links.  
+- **Obter Informações**: Acompanhe estatísticas detalhadas dos links criados.  
+- **Redirecionar Links**: Redirecione para URLs originais.  
+
+---
+
+## 🐱‍👤 **Funcionalidades futuras**
+- **Reportar url**
+- **Criar qrCode**
+
+## 🌟 **Comece Agora - É Grátis!**  
+
+Visite o site e aproveite todos os recursos:  
+
+🔗 [YKMiniURL](https://ykminiurl.vercel.app/)  
+
+---
+
+## 📬 **Contato**  
+
+- **Portfólio**: [Daniel Rocha](https://dannickportifolio.vercel.app/)  
+- **GitHub**: [Dannick10](https://github.com/Dannick10)  
+- **E-mail**: [ykdanieldev@gmail.com](mailto:ykdanieldev@gmail.com)  
+
+Sinta-se à vontade para abrir issues no repositório ou contribuir com melhorias! 
+
