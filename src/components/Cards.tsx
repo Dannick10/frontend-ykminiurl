@@ -16,12 +16,12 @@ const Cards = () => {
         },
         {
             title: 'Adicionar Senha',
-            description: 'AProteja seus links com uma senha personalizada.',
+            description: 'Proteja seus links com uma senha personalizada.',
             svg: '/cards/iconshield.svg'
         },
         {
             title: 'Obter Informações',
-            description: 'Proteja seus links com uma senha Acompanhe acessos e data de criação do link..',
+            description: 'Veja como seus links estão performando com estatísticas detalhadas.',
             svg: '/cards/iconinfo.svg'
         },
         {
