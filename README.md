@@ -40,7 +40,7 @@ Compartilhar links nunca foi tão fácil e seguro.
 ## ✒ **UI/UX**  
 O UI/UX do YKMiniURL foi criado no **Figma**, utilizando **Auto Layout** para garantir um design responsivo e organizado.
 
-Confira o design do projeto no Figma: [Figma do YKMiniURL](https://www.figma.com/)
+Confira o design do projeto no Figma: [Figma do YKMiniURL](https://www.figma.com/design/ABmbwn4qIWOZ4N7diKZ7Wg/ykminiurl?node-id=0-1&t=9TjP9yKKKc1IAmgd-1)
 
 ---
 
