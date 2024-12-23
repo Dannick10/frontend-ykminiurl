@@ -53,7 +53,7 @@ const Page = () => {
         </div>
       )}
 
-      <main className="w-full py-8 min-h-80 flex justify-center flex-col items-center gap-8">
+      <main className="w-full py-10 min-h-80 flex justify-center flex-col items-center gap-8">
         <section className="flex items-center gap-2">
           <div className="w-[90px] h-[90px] md:w-[125px] md:h-[125px] relative">
           <Image src={logo} fill className="object-fill" alt="logo" />

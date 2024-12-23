@@ -62,7 +62,7 @@ const Redirect = () => {
         {loading && (
           <div
             role="status"
-            className="w-full h-full fixed flex justify-center items-center bg-black bg-opacity-10 z-10"
+            className="w-full h-full top-0 left-0 fixed flex justify-center items-center bg-black bg-opacity-10 z-10"
           >
             <svg
               aria-hidden="true"
