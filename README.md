@@ -14,7 +14,7 @@ Compartilhar links nunca foi tão fácil e seguro.
 - **Encurtamento de Links Longos**: Torne seus links curtos e fáceis de compartilhar.  
 - **Proteção com Senha**: Adicione uma camada extra de segurança aos seus links.  
 - **Estatísticas Detalhadas**: Visualize dados sobre cliques, data de criação e desempenho dos seus links.  
-- **Redirecionamento Simples**: Acesse o link original com apenas um clique.  
+- **Redirecionamento Simples**: Acesse o link original com apenas um clique.
 
 ### 🛠️ **Tecnologias Utilizadas**  
 
@@ -31,7 +31,23 @@ Compartilhar links nunca foi tão fácil e seguro.
 - **CORS**
 - **Swagger**
 
+### UI/UX
+- **figma**
+- **photoshop**
+
 ---
+
+## ✒ **UI/UX**  
+O UI/UX do YKMiniURL foi criado no **Figma**, utilizando **Auto Layout** para garantir um design responsivo e organizado.
+
+Confira o design do projeto no Figma: [Figma do YKMiniURL](https://www.figma.com/)
+
+---
+
+## 🔧 **Backend**  
+O backend do YKMiniURL foi desenvolvido utilizando **Node.js**, **Express**, **MongoDB**, **Bcrypt** e **CORS**.
+
+Acesse o Repositório do Backend: [YKMiniURL Repositório Backend](https://github.com/Dannick10/Backend-ykminiurl)
 
 ## 📚 **Documentação da API**  
 
