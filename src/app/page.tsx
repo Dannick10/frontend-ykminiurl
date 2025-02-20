@@ -13,6 +13,7 @@ import { copyToClipboard } from "@/utils/copyBoard";
 import Cards from "@/components/Cards";
 import Arcodion from "@/components/Arcodion";
 import Loading from "./loading";
+import AdComponent from "@/components/adsense";
 
 export default function Home() {
   const {
@@ -72,7 +73,6 @@ export default function Home() {
       {loading && (
         <Loading/>
       )}
-
       <aside className="flex flex-col-reverse lg:flex-row gap-2 justify-between px-28 items-center md:gap-10 lg:gap-20">
         <div className="flex flex-col justify-center items-center gap-2 ">
           <div className="space-y-2 text-center lg:text-left px-8 md:px-0">
@@ -154,8 +154,8 @@ export default function Home() {
           <Image src={woman} alt="woman" fill style={{ objectFit: "contain" }} />
         </div>
       </aside>
-
       <section className="px-12 md:px-28 flex flex-col  gap-6">
+      <AdComponent/>
           <h3 className="text-xl text-[rgb(3,76,140)] font-bold">O que você pode fazer com o YKMiniURL?</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 justify-center gap-4 ">
             <Cards/>
@@ -174,6 +174,7 @@ export default function Home() {
           <p className="text-xl font-bold text-gray-900">FAQ</p>
             <Arcodion dataBase={FAQdata} />
       </section>
+          <AdComponent />
     </section>
   );
 }

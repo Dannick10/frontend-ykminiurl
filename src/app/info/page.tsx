@@ -13,6 +13,7 @@ import Inputs from "@/components/Inputs";
 import ShowInfoLinks from "./components/ShowInfoLinks";
 import { motion } from "framer-motion";
 import Loading from "../loading";
+import AdComponent from "@/components/adsense";
 
 const Page = () => {
   const {
@@ -131,6 +132,7 @@ const Page = () => {
       </aside>
       <div className="px-4 text-center md:px-6 lg:text-start lg:px-32 mt-8 text-gray-800 ">
       <p className="">Suas informações são armazenadas com segurança e visíveis apenas para você. Se o link estiver protegido por senha, somente quem a possui poderá acessar os dados detalhados.</p>
+      <AdComponent />
       </div>
     </section>
   );

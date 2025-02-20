@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import Script from "next/script"
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -57,6 +58,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-br">
+      <Script
+      async
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4567665986142588"
+      strategy="lazyOnload"
+      crossOrigin="anonymous"
+      />
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         >
@@ -64,8 +71,9 @@ export default function RootLayout({
         <main className="py-8 min-h-80">
         {children}
         </main>
-        <Footer/>
+        <Footer/>    
       </body>
+      
     </html>
   );
 }

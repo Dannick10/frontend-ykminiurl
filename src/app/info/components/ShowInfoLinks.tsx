@@ -8,6 +8,7 @@ import Link from "next/link";
 import { formatRelativeTime } from "@/utils/DateConvert";
 import { motion } from "framer-motion";
 import Loading from "@/app/loading";
+import AdComponent from "@/components/adsense";
 type Showinfo = {
   ShortUrl: string | undefined;
   clicks: number | undefined;
@@ -59,6 +60,8 @@ const ShowInfoLinks = ({ ShortUrl, clicks, date }: Showinfo) => {
                 Acessar Link
               </motion.button>
             </Link>
+
+            <AdComponent/>
           </div>
         </div>
        

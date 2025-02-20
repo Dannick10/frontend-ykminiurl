@@ -24,7 +24,7 @@ const Header = () => {
       url: "/dev",
     },
   ];
-
+  
   return (
     <aside className="fixed  w-full z-10 bg-white flex justify-between px-10 items-center gap-2 font-sora border-b-2 border-gray-100">
       <div className="flex gap-2">

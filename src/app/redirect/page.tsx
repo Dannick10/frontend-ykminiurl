@@ -9,6 +9,7 @@ import Alert from "@/components/Alert";
 import Inputs from "@/components/Inputs";
 import usePassword from "@/hooks/usePassword";
 import Loading from "../loading";
+import AdComponent from "@/components/adsense";
 
 const Redirect = () => {
   const {
@@ -81,6 +82,7 @@ const Redirect = () => {
               />
             </svg>
             <span className="sr-only">Loading...</span>
+            <AdComponent/>
           </div>
         )}
         <div className="flex flex-col items-center justify-center min-h-screen">
@@ -95,6 +97,7 @@ const Redirect = () => {
                   </button>
                 </Link>
               )}
+              <AdComponent/>
             </div>
           ) : (
             <div>
@@ -116,6 +119,7 @@ const Redirect = () => {
               </Inputs>
             </div>
           )}
+           <AdComponent/>
         </div>
           </Suspense>
       </section>
