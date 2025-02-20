@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import Script from "next/script"
+import Script from "next/script";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -28,7 +28,9 @@ export const metadata: Metadata = {
     "encurtar URLs",
     "compartilhar links",
   ],
-  authors: [{ name: "Daniel Rocha", url: "https://dannickportifolio.vercel.app/" }],
+  authors: [
+    { name: "Daniel Rocha", url: "https://dannickportifolio.vercel.app/" },
+  ],
   robots: {
     index: true,
     follow: true,
@@ -58,22 +60,22 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-br">
-      <Script
-      async
-      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4567665986142588"
-      strategy="lazyOnload"
-      crossOrigin="anonymous"
-      />
+      <head>
+        <meta name="google-adsense-account" content="ca-pub-4567665986142588" />
+        <Script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4567665986142588"
+          strategy="lazyOnload"
+          crossOrigin="anonymous"
+        />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-        >
-        <Header/>
-        <main className="py-8 min-h-80">
-        {children}
-        </main>
-        <Footer/>    
+      >
+        <Header />
+        <main className="py-8 min-h-80">{children}</main>
+        <Footer />
       </body>
-      
     </html>
   );
 }
