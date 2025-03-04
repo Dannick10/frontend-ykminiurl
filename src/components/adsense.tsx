@@ -21,7 +21,7 @@ const AdComponent = () => {
 
   return (
     <ins
-      className="adsbygoogle"
+      className="adsbygoogle bg-gray-100 w-full mx-auto overflow-hidden"
       style={{ display: "block", textAlign: "center" }}
       data-ad-layout="in-article"
       data-ad-format="fluid"

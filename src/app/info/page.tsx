@@ -62,20 +62,24 @@ const Page = () => {
         />
       )}
 
-      {loading && (
-        <Loading/>
-      )}
+      {loading && <Loading />}
 
       <aside className="flex flex-col-reverse lg:flex-row justify-center items-center gap-8 lg:gap-28">
         <div className="flex flex-col justify-center items-center gap-2 max-w-[600px]">
-          <div className="space-y-2 text-center lg:text-left px-8 md:px-0">
-            <h1 className="text-[24px] md:text-[32px] text-[rgb(3,76,140)] font-bold ">
+          <div className="space-y-4 text-center lg:text-left px-8 md:px-0">
+            <h1 className="text-2xl md:text-3xl text-[rgb(3,76,140)] font-bold">
               Deseja ter informações do seu{" "}
-              <span className="text-[#BF2C0B]">link</span> ?
+              <span className="text-[#BF2C0B]">link encurtado</span>?
             </h1>
-            <p className="font-light text-[18px] md:text-[24px] text-[#0A0A0D] font-sora">
-              cole seu link encurtado, digite a senha se o link estiver com
-              segurança.
+            <p className="font-light text-[#0A0A0D] font-sora">
+              Cole seu link encurtado abaixo e, se ele estiver protegido, digite
+              a senha para acessar estatísticas detalhadas como cliques e data
+              de criação.
+            </p>
+            <p className=" text-gray-700">
+              O YKMiniURL oferece uma maneira simples e segura de acompanhar o
+              desempenho dos seus links. Veja quem acessou, quando e quantas
+              vezes!
             </p>
           </div>
           <div className="flex flex-col items-center py-38 gap-5  mt-9 ">
@@ -116,7 +120,11 @@ const Page = () => {
               </Inputs>
             )}
 
-            <Inputs value={url} onChange={(e) => Seturl(e.target.value)} placehold="cole seu link">
+            <Inputs
+              value={url}
+              onChange={(e) => Seturl(e.target.value)}
+              placehold="cole seu link"
+            >
               <motion.button
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
@@ -131,9 +139,13 @@ const Page = () => {
 
         <Image src={womanpoint} width={360} height={310} alt="a" />
       </aside>
-      <div className="px-4 text-center md:px-6 lg:text-start lg:px-32 mt-8 text-gray-800 ">
-      <p className="">Suas informações são armazenadas com segurança e visíveis apenas para você. Se o link estiver protegido por senha, somente quem a possui poderá acessar os dados detalhados.</p>
-      <AdComponent />
+      <div className="px-4 text-center md:px-6 lg:text-start lg:px-32 mt-10 text-gray-800 ">
+        <p className="">
+          Suas informações são armazenadas com segurança e visíveis apenas para
+          você. Se o link estiver protegido por senha, somente quem a possui
+          poderá acessar os dados detalhados.
+        </p>
+        <AdComponent />
       </div>
     </section>
   );
