@@ -68,6 +68,8 @@ export default function RootLayout({
           strategy="lazyOnload"
           crossOrigin="anonymous"
         />
+        <meta name="robots" content="index, follow" />
+        <meta name="google-site-verification" content="gkdx1Oj0RB6e4bIKK2LyQwqYMT3E8RLWfs7rMC_w-AA" />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}

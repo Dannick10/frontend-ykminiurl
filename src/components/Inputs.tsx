@@ -4,10 +4,11 @@ type InputProps = {
   value: string;
   onChange: (event: ChangeEvent<HTMLInputElement>) => void;
   children: JSX.Element;
+  placehold?: string;
   type?: "text" | "password";
 };
 
-const Inputs = ({ value, onChange, type, children }: InputProps) => {
+const Inputs = ({ value, onChange, type, children, placehold }: InputProps) => {
   return (
     <motion.div 
     whileHover={{
@@ -20,7 +21,7 @@ const Inputs = ({ value, onChange, type, children }: InputProps) => {
           paddingLeft: "30px"
         }}
         type={type ? type : "text"}
-        placeholder="Cole seu link"
+        placeholder={placehold}
         className="w-full h-full font-sora font-light outline-none px-4 py-2 text-[#211D26]"
         value={value}
         onChange={onChange}

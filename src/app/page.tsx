@@ -107,6 +107,7 @@ export default function Home() {
                 value={password}
                 onChange={(e) => Setpassword(e.target.value)}
                 type={changeVisiblity}
+                placehold="digite sua senha"
               >
                 <button
                   className="w-[20%] right-0 top-0 flex justify-center items-center px-[13px] py-1 rounded-[24px] border-[1px]  text-[#BF2C0B] cursor-pointer"
@@ -121,7 +122,7 @@ export default function Home() {
               </Inputs>
             )}
 
-            <Inputs value={url} onChange={(e) => Seturl(e.target.value)}>
+            <Inputs value={url} onChange={(e) => Seturl(e.target.value)} placehold="cole seu link">
               <motion.button
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
