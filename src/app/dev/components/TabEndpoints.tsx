@@ -1,116 +1,148 @@
-import { endpointsData } from "@/app/dev/data/EndpointsViews";
-import { IoIosArrowUp } from "react-icons/io";
-import { IoIosArrowDown } from "react-icons/io";
-import { motion } from "framer-motion";
+"use client"
+import { useState } from "react"
+import { motion, AnimatePresence } from "framer-motion"
+import { endpointsData } from "@/app/dev/data/EndpointsViews"
+import { FaChevronDown, FaChevronUp, FaCopy, FaCode } from "react-icons/fa"
 
 type Endpoint = {
-  exampleRequest: string;
-};
-type EndpointsTypes = {
-  msg: (endpoint: Endpoint) => void;
-};
+  exampleRequest: string
+}
 
-const Endpoints = ({ msg }: EndpointsTypes) => {
+type EndpointsProps = {
+  msg: (endpoint: Endpoint) => void
+}
+
+const Endpoints = ({ msg }: EndpointsProps) => {
+  const [openIndex, setOpenIndex] = useState<number | null>(null)
+
+  const toggleEndpoint = (index: number) => {
+    setOpenIndex(openIndex === index ? null : index)
+  }
+
+  const getMethodColor = (type: string) => {
+    switch (type.toLowerCase()) {
+      case "get":
+        return "bg-green-100 text-green-800"
+      case "post":
+        return "bg-blue-100 text-blue-800"
+      case "put":
+        return "bg-yellow-100 text-yellow-800"
+      case "delete":
+        return "bg-red-100 text-red-800"
+      default:
+        return "bg-gray-100 text-gray-800"
+    }
+  }
+
+  const getStatusColor = (text: string) => {
+    if (text.includes("200") || text.includes("201") || text.includes("202")) {
+      return "text-green-600"
+    } else if (text.includes("400") || text.includes("401") || text.includes("403") || text.includes("404")) {
+      return "text-yellow-600"
+    } else if (text.includes("500")) {
+      return "text-red-600"
+    }
+    return "text-gray-600"
+  }
+
   return (
-    <>
-      <div className="space-y-4">
-        {endpointsData.map((endpoint, index) => (
+    <div className="space-y-4">
+      {endpointsData.map((endpoint, index) => (
+        <motion.div
+          key={index}
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.3, delay: index * 0.1 }}
+          className="border border-gray-200 rounded-xl overflow-hidden bg-white shadow-md hover:shadow-lg transition-all"
+        >
           <div
-            key={index}
-            tabIndex={index}
-            className={`group  border-2 rounded-[8px] text-sm`}
+            className="flex items-center justify-between p-4 cursor-pointer select-none"
+            onClick={() => toggleEndpoint(index)}
           >
-            <div className="w-full flex items-center justify-between p-4 bg-gray-100 cursor-pointer select-none">
-              <h2 className="text-lg font-bold flex-1 text-gray-800">
-                {endpoint.title}
-              </h2>
-              <div className="text-orange-600">
-                <span className="invisible text-orange-400 group-focus:visible">
-                  <IoIosArrowUp />
-                </span>
-                <span className="visible group-focus:invisible">
-                  <IoIosArrowDown />
-                </span>
+            <div className="flex items-center gap-3 flex-1">
+              <div className={`px-3 py-1 rounded-full text-xs font-bold uppercase ${getMethodColor(endpoint.type)}`}>
+                {endpoint.type}
               </div>
+              <h3 className="text-lg font-bold text-gray-800">{endpoint.title}</h3>
             </div>
-            <div className="invisible h-auto max-h-0 items-center opacity-0 transition-all group-focus:visible group-focus:max-h-screen group-focus:opacity-100 group-focus:duration-1000 border-2 border-t-0 border-double">
-              <div className="p-4 space-y-2">
-                <p className="">{endpoint.subtitle}</p>
-                <p>
-                  <span className="font-semibold">Method:</span>{" "}
-                  <span className="uppercase">{endpoint.type}</span>
-                </p>
-                {endpoint.params && (
-                  <p className="bg-gray-100 p-4 rounded">
-                    <span className="font-semibold">Parameters:</span>{" "}
-                    {endpoint.params}
-                  </p>
-                )}
-
-                {endpoint.exampleRequest && (
-                  <>
-                    <div className="mt-2">
-                      <span className="font-semibold">Example Request:</span>
-                      <pre className="bg-gray-100 p-2 rounded-md text-sm overflow-x-auto">
-                        {endpoint.exampleRequest}
-                      </pre>
-                    </div>
-                    <div className="flex justify-end">
-                      <motion.button
-                        whileHover={{
-                          scale: [1, 1.2, 1],
-                        }}
-                        whileTap={{
-                          scale: [1, 0.8, 1],
-                        }}
-                        transition={{ duration: 0.5 }}
-                        className="flex  justify-center items-center px-[18px] py-1 rounded-[24px] border-[1px]  bg-orange-600 text-white m-4"
-                        onClick={() => msg(endpoint)}
-                      >
-                        Copiar
-                      </motion.button>
-                    </div>
-                  </>
-                )}
-
-                {endpoint.exampleResponse && (
-                  <>
-                    <div className="mt-2">
-                      <span className="font-semibold">Example Reponse:</span>
-                      <pre className="bg-gray-100 p-2 rounded-md text-sm overflow-x-auto">
-                        {endpoint.exampleResponse}
-                      </pre>
-                    </div>      
-                  </>
-                )}
-                <div>
-                  <h3 className="font-semibold">Responses:</h3>
-                  <ul className="list-disc space-y-1 py-4 pl-5">
-                    {endpoint.responses.map((response, responseIndex) => (
-                      <li
-                        key={responseIndex}
-                        className={`
-                      ${response.text.includes("202") && "text-green-600"}
-                      ${response.text.includes("200") && "text-green-600"}
-                      ${response.text.includes("401") && "text-yellow-600"}
-                      ${response.text.includes("403") && "text-yellow-600"}
-                      ${response.text.includes("404") && "text-yellow-600"}
-                      ${response.text.includes("500") && "text-red-600"}
-                        
-                        `}
-                      >
-                        {response.text}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            </div>
+            <div className="text-[#034C8C]">{openIndex === index ? <FaChevronUp /> : <FaChevronDown />}</div>
           </div>
-        ))}
-      </div>
-    </>
-  );
-};
 
-export default Endpoints;
+          <AnimatePresence>
+            {openIndex === index && (
+              <motion.div
+                initial={{ height: 0, opacity: 0 }}
+                animate={{ height: "auto", opacity: 1 }}
+                exit={{ height: 0, opacity: 0 }}
+                transition={{ duration: 0.3 }}
+                className="border-t border-gray-200"
+              >
+                <div className="p-6 space-y-4">
+                  <p className="text-gray-700">{endpoint.subtitle}</p>
+
+                  {endpoint.params && (
+                    <div className="mt-4">
+                      <h4 className="text-sm font-semibold text-gray-700 mb-2">Parâmetros:</h4>
+                      <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                        <code className="text-sm text-gray-800">{endpoint.params}</code>
+                      </div>
+                    </div>
+                  )}
+
+                  {endpoint.exampleRequest && (
+                    <div className="mt-4">
+                      <div className="flex items-center justify-between mb-2">
+                        <h4 className="text-sm font-semibold text-gray-700">Exemplo de Requisição:</h4>
+                        <motion.button
+                          whileHover={{ scale: 1.05 }}
+                          whileTap={{ scale: 0.95 }}
+                          className="flex items-center gap-2 px-3 py-1 rounded-md bg-[#034C8C] text-white text-xs font-medium"
+                          onClick={() => msg(endpoint)}
+                        >
+                          <FaCopy className="text-xs" /> Copiar
+                        </motion.button>
+                      </div>
+                      <div className="bg-gray-50 p-4 rounded-lg border border-gray-200 overflow-x-auto">
+                        <pre className="text-sm text-[#BF2C0B] font-mono whitespace-pre-wrap">
+                          {endpoint.exampleRequest}
+                        </pre>
+                      </div>
+                    </div>
+                  )}
+
+                  {endpoint.exampleResponse && (
+                    <div className="mt-4">
+                      <h4 className="text-sm font-semibold text-gray-700 mb-2">Exemplo de Resposta:</h4>
+                      <div className="bg-gray-50 p-4 rounded-lg border border-gray-200 overflow-x-auto">
+                        <pre className="text-sm text-[#034C8C] font-mono whitespace-pre-wrap">
+                          {endpoint.exampleResponse}
+                        </pre>
+                      </div>
+                    </div>
+                  )}
+
+                  <div className="mt-4">
+                    <h4 className="text-sm font-semibold text-gray-700 mb-2">Códigos de Resposta:</h4>
+                    <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                      <ul className="space-y-2">
+                        {endpoint.responses.map((response, responseIndex) => (
+                          <li key={responseIndex} className={`flex items-start gap-2 ${getStatusColor(response.text)}`}>
+                            <FaCode className="mt-1 flex-shrink-0" />
+                            <span>{response.text}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </motion.div>
+      ))}
+    </div>
+  )
+}
+
+export default Endpoints
+

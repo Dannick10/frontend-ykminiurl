@@ -60,7 +60,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-br">
-      <head>
+      <head>       
         <meta name="google-adsense-account" content="ca-pub-4567665986142588" />
         <Script
           async
