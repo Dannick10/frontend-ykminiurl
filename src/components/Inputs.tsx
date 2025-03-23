@@ -15,7 +15,7 @@ const Inputs = ({ value, onChange, type, children, placehold }: InputProps) => {
       scale: 1.01,
       boxShadow: "0px 4px 15px rgba(0, 0, 0, 0.2)",
     }}
-    className="border-2 rounded-[20px] py-1.5 px-1.5 w-[367px] border-[#BF2C0B] overflow-hidden relative flex">
+    className="border-2 rounded-[20px] py-1.5 px-1.5 w-full border-[#BF2C0B] overflow-hidden relative flex">
       <motion.input  
         whileFocus={{
           paddingLeft: "30px"

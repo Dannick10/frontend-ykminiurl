@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import Script from "next/script";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -61,15 +60,14 @@ export default function RootLayout({
   return (
     <html lang="pt-br">
       <head>       
-        <meta name="google-adsense-account" content="ca-pub-4567665986142588" />
-        <Script
+      <meta name="google-adsense-account" content="ca-pub-4567665986142588" />
+      <script
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4567665986142588"
-          strategy="lazyOnload"
           crossOrigin="anonymous"
-        />
-        <meta name="robots" content="index, follow" />
+        ></script>
         <meta name="google-site-verification" content="gkdx1Oj0RB6e4bIKK2LyQwqYMT3E8RLWfs7rMC_w-AA" />
+        <meta name="robots" content="index, follow" />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
