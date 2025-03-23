@@ -1,27 +1,101 @@
-"use client"
-import Image from "next/image"
-import { useState, useEffect } from "react"
-import { motion } from "framer-motion"
-import { IoSearch } from "react-icons/io5"
-import { MdOutlineVisibility, MdVisibilityOff } from "react-icons/md"
-import { FaShieldAlt, FaChartLine, FaLink, FaShareAlt, FaCopy, FaCheck } from "react-icons/fa"
-import usePassword from "@/hooks/usePassword"
-import useShortLink from "@/hooks/useShortLink"
-import Alert from "@/components/Alert"
-import Inputs from "@/components/Inputs"
-import Cards from "@/components/Cards"
-import Arcodion from "@/components/Arcodion"
-import Loading from "./loading"
-import AdComponent from "@/components/adsense"
-import { copyToClipboard } from "@/utils/copyBoard"
+"use client";
+import Image from "next/image";
+import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
+import { IoSearch } from "react-icons/io5";
+import { MdOutlineVisibility, MdVisibilityOff } from "react-icons/md";
+import {
+  FaShieldAlt,
+  FaChartLine,
+  FaLink,
+  FaShareAlt,
+  FaCopy,
+  FaCheck,
+} from "react-icons/fa";
+import usePassword from "@/hooks/usePassword";
+import useShortLink from "@/hooks/useShortLink";
+import Alert from "@/components/Alert";
+import Inputs from "@/components/Inputs";
+import Cards from "@/components/Cards";
+import Arcodion from "@/components/Arcodion";
+import Loading from "./loading";
+import AdComponent from "@/components/adsense";
+import { copyToClipboard } from "@/utils/copyBoard";
+
+type client = {
+  rating: number;
+  name: string;
+  department: string;
+  feedback: string;
+};
 
 export default function Home() {
-  const [copied, setCopied] = useState(false)
+  const [copied, setCopied] = useState(false);
 
-  const { viewPassword, handleVisibilityPassword, changeVisiblity, handleChangeVisibility } = usePassword()
+  const {
+    viewPassword,
+    handleVisibilityPassword,
+    changeVisiblity,
+    handleChangeVisibility,
+  } = usePassword();
 
-  const { createShortLink, msg, loading, url, password, Seturl, shortUrl, Setpassword, Setmsg, setMessage } =
-    useShortLink()
+  const {
+    createShortLink,
+    msg,
+    loading,
+    url,
+    password,
+    Seturl,
+    shortUrl,
+    Setpassword,
+    Setmsg,
+    setMessage,
+  } = useShortLink();
+
+  const clients: client[] = [
+    {
+      rating: 5,
+      name: "Maria Silva",
+      feedback:
+        "O YKMiniURL revolucionou a forma como compartilho links nas minhas campanhas de marketing. As estatísticas detalhadas me ajudam a entender melhor o comportamento dos meus clientes.",
+      department: "Marketing Digital",
+    },
+    {
+      rating: 4,
+      name: "João Santos",
+      feedback:
+        "Como desenvolvedor, aprecio a simplicidade e eficiência do YKMiniURL. A API é fácil de integrar e a proteção por senha é um diferencial importante para meus projetos.",
+      department: "Desenvolvedor Web",
+    },
+    {
+      rating: 5,
+      name: "Ana Oliveira",
+      feedback:
+        "Uso o YKMiniURL para encurtar links em documentos e relatórios internos. A segurança e a personalização dos links são pontos fortes que me ajudam muito no dia a dia.",
+      department: "Analista de Dados",
+    },
+    {
+      rating: 3,
+      name: "Carlos Mendes",
+      feedback:
+        "O serviço é bom, mas gostaria de ver mais opções de personalização nos links gerados. No geral, atende bem às minhas necessidades.",
+      department: "Empreendedor",
+    },
+    {
+      rating: 5,
+      name: "Fernanda Costa",
+      feedback:
+        "Simplesmente essencial para minha rotina! Poder acompanhar as métricas dos links compartilhados me dá mais controle sobre minhas campanhas.",
+      department: "Gestora de Projetos",
+    },
+    {
+      rating: 4,
+      name: "Ricardo Lima",
+      feedback:
+        "A facilidade de uso do YKMiniURL é um grande diferencial. Recomendo para quem busca praticidade e segurança na hora de encurtar links.",
+      department: "Consultor de TI",
+    },
+  ];
 
   const FAQdata = [
     {
@@ -44,24 +118,26 @@ export default function Home() {
       subtitle:
         "Vá até a página 'Informações', cole seu link encurtado, digite a senha (se houver) e veja estatísticas detalhadas.",
     },
-  ]
+  ];
 
   useEffect(() => {
     if (copied) {
       const timer = setTimeout(() => {
-        setCopied(false)
-      }, 2000)
-      return () => clearTimeout(timer)
+        setCopied(false);
+      }, 2000);
+      return () => clearTimeout(timer);
     }
-  }, [copied])
+  }, [copied]);
 
   const handleCopyLink = () => {
     if (shortUrl) {
-      copyToClipboard(`https://ykminiurl.vercel.app/redirect?link=${shortUrl.shortUrl}`)
-      setCopied(true)
-      setMessage("sucesso", "Link copiado com sucesso", "green", true)
+      copyToClipboard(
+        `https://ykminiurl.vercel.app/redirect?link=${shortUrl.shortUrl}`
+      );
+      setCopied(true);
+      setMessage("sucesso", "Link copiado com sucesso", "green", true);
     }
-  }
+  };
 
   return (
     <main className="overflow-hidden">
@@ -89,23 +165,27 @@ export default function Home() {
         <div className="container mx-auto px-4 relative z-10">
           <div className="flex flex-col lg:flex-row items-center gap-12">
             <div className="w-full lg:w-1/2 space-y-6">
-              <span className="inline-block px-3 py-1 bg-blue-100 text-[#034C8C] rounded-full text-sm font-semibold">
+              <span className="inline-block px-3 py-1 bg-blue-100 text-[#034C8C] rounded-full text-sm">
                 Encurtador de URLs Profissional
               </span>
 
               <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
-                Transforme links longos em <span className="text-[#034C8C]">URLs curtas</span> e{" "}
+                Transforme links longos em{" "}
+                <span className="text-[#034C8C]">URLs curtas</span> e{" "}
                 <span className="text-[#BF2C0B]">seguras</span>
               </h1>
 
               <p className="text-lg text-gray-700">
-                Compartilhar links nunca foi tão fácil. O YKMiniURL permite encurtar URLs, adicionar proteção por senha
-                e rastrear o desempenho dos seus links.
+                Compartilhar links nunca foi tão fácil. O YKMiniURL permite
+                encurtar URLs, adicionar proteção por senha e rastrear o
+                desempenho dos seus links.
               </p>
 
               <div className="bg-white rounded-xl shadow-xl p-6 border border-gray-100">
                 <div className="flex flex-wrap items-center justify-between gap-4 mb-4">
-                  <h3 className="text-xl font-bold text-gray-800">Encurte seu link agora</h3>
+                  <h3 className="text-xl font-bold text-gray-800">
+                    Encurte seu link agora
+                  </h3>
                   <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
@@ -128,15 +208,27 @@ export default function Home() {
                       <button
                         className="w-[20%] right-0 top-0 flex justify-center items-center px-[13px] py-1 rounded-[24px] border-[1px] text-[#BF2C0B] cursor-pointer"
                         onClick={handleChangeVisibility}
-                        aria-label={changeVisiblity === "text" ? "Ocultar senha" : "Mostrar senha"}
+                        aria-label={
+                          changeVisiblity === "text"
+                            ? "Ocultar senha"
+                            : "Mostrar senha"
+                        }
                       >
-                        {changeVisiblity === "text" ? <MdOutlineVisibility /> : <MdVisibilityOff />}
+                        {changeVisiblity === "text" ? (
+                          <MdOutlineVisibility />
+                        ) : (
+                          <MdVisibilityOff />
+                        )}
                       </button>
                     </Inputs>
                   </div>
                 )}
 
-                <Inputs value={url} onChange={(e) => Seturl(e.target.value)} placehold="Cole seu link aqui">
+                <Inputs
+                  value={url}
+                  onChange={(e) => Seturl(e.target.value)}
+                  placehold="Cole seu link aqui"
+                >
                   <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
@@ -155,7 +247,9 @@ export default function Home() {
                   >
                     <div className="flex flex-col gap-2">
                       <div className="flex justify-between items-center">
-                        <span className="text-sm font-medium text-gray-600">Seu link encurtado:</span>
+                        <span className="text-sm font-medium text-gray-600">
+                          Seu link encurtado:
+                        </span>
                         <button
                           onClick={handleCopyLink}
                           className="flex items-center gap-1 text-sm font-medium text-[#034C8C] hover:text-[#023a6a]"
@@ -172,7 +266,8 @@ export default function Home() {
                         </button>
                       </div>
                       <div className="p-3 bg-white rounded border border-gray-200 font-medium text-[#BF2C0B] break-all">
-                        https://ykminiurl.vercel.app/redirect?link={shortUrl.shortUrl}
+                        https://ykminiurl.vercel.app/redirect?link=
+                        {shortUrl.shortUrl}
                       </div>
                     </div>
                   </motion.div>
@@ -200,9 +295,12 @@ export default function Home() {
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-[#034C8C] mb-4">Por que escolher o YKMiniURL?</h2>
+            <h2 className="text-3xl font-bold text-[#034C8C] mb-4">
+              Por que escolher o YKMiniURL?
+            </h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
-              Nossa plataforma oferece tudo o que você precisa para gerenciar seus links de forma eficiente.
+              Nossa plataforma oferece tudo o que você precisa para gerenciar
+              seus links de forma eficiente.
             </p>
           </div>
 
@@ -211,9 +309,12 @@ export default function Home() {
               <div className="w-14 h-14 bg-blue-100 rounded-full flex items-center justify-center mb-4">
                 <FaLink className="w-6 h-6 text-[#034C8C]" />
               </div>
-              <h3 className="text-xl font-bold text-gray-800 mb-2">Links Curtos</h3>
+              <h3 className="text-xl font-bold text-gray-800 mb-2">
+                Links Curtos
+              </h3>
               <p className="text-gray-600">
-                Transforme URLs longas em links curtos e fáceis de compartilhar em segundos.
+                Transforme URLs longas em links curtos e fáceis de compartilhar
+                em segundos.
               </p>
             </div>
 
@@ -221,9 +322,12 @@ export default function Home() {
               <div className="w-14 h-14 bg-blue-100 rounded-full flex items-center justify-center mb-4">
                 <FaShieldAlt className="w-6 h-6 text-[#034C8C]" />
               </div>
-              <h3 className="text-xl font-bold text-gray-800 mb-2">Proteção por Senha</h3>
+              <h3 className="text-xl font-bold text-gray-800 mb-2">
+                Proteção por Senha
+              </h3>
               <p className="text-gray-600">
-                Adicione uma camada extra de segurança aos seus links com proteção por senha.
+                Adicione uma camada extra de segurança aos seus links com
+                proteção por senha.
               </p>
             </div>
 
@@ -231,16 +335,26 @@ export default function Home() {
               <div className="w-14 h-14 bg-blue-100 rounded-full flex items-center justify-center mb-4">
                 <FaChartLine className="w-6 h-6 text-[#034C8C]" />
               </div>
-              <h3 className="text-xl font-bold text-gray-800 mb-2">Estatísticas</h3>
-              <p className="text-gray-600">Acompanhe o desempenho dos seus links com métricas de cliques e acessos.</p>
+              <h3 className="text-xl font-bold text-gray-800 mb-2">
+                Estatísticas
+              </h3>
+              <p className="text-gray-600">
+                Acompanhe o desempenho dos seus links com métricas de cliques e
+                acessos.
+              </p>
             </div>
 
             <div className="bg-white p-6 rounded-xl shadow-md border border-gray-100 hover:shadow-lg transition-all">
               <div className="w-14 h-14 bg-blue-100 rounded-full flex items-center justify-center mb-4">
                 <FaShareAlt className="w-6 h-6 text-[#034C8C]" />
               </div>
-              <h3 className="text-xl font-bold text-gray-800 mb-2">Compartilhamento</h3>
-              <p className="text-gray-600">Compartilhe seus links encurtados em qualquer plataforma com facilidade.</p>
+              <h3 className="text-xl font-bold text-gray-800 mb-2">
+                Compartilhamento
+              </h3>
+              <p className="text-gray-600">
+                Compartilhe seus links encurtados em qualquer plataforma com
+                facilidade.
+              </p>
             </div>
           </div>
         </div>
@@ -250,8 +364,12 @@ export default function Home() {
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-[#034C8C] mb-4">O que você pode fazer com o YKMiniURL?</h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">Explore todas as funcionalidades da nossa plataforma.</p>
+            <h2 className="text-3xl font-bold text-[#034C8C] mb-4">
+              O que você pode fazer com o YKMiniURL?
+            </h2>
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              Explore todas as funcionalidades da nossa plataforma.
+            </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -269,19 +387,27 @@ export default function Home() {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
             <div className="p-6 bg-white rounded-xl shadow-md">
-              <p className="text-3xl md:text-4xl font-bold text-[#034C8C]">10M+</p>
+              <p className="text-3xl md:text-4xl font-bold text-[#034C8C]">
+                10M+
+              </p>
               <p className="text-gray-600 mt-2">Links Encurtados</p>
             </div>
             <div className="p-6 bg-white rounded-xl shadow-md">
-              <p className="text-3xl md:text-4xl font-bold text-[#034C8C]">5K+</p>
+              <p className="text-3xl md:text-4xl font-bold text-[#034C8C]">
+                5K+
+              </p>
               <p className="text-gray-600 mt-2">Usuários Ativos</p>
             </div>
             <div className="p-6 bg-white rounded-xl shadow-md">
-              <p className="text-3xl md:text-4xl font-bold text-[#034C8C]">99.9%</p>
+              <p className="text-3xl md:text-4xl font-bold text-[#034C8C]">
+                99.9%
+              </p>
               <p className="text-gray-600 mt-2">Uptime</p>
             </div>
             <div className="p-6 bg-white rounded-xl shadow-md">
-              <p className="text-3xl md:text-4xl font-bold text-[#034C8C]">100%</p>
+              <p className="text-3xl md:text-4xl font-bold text-[#034C8C]">
+                100%
+              </p>
               <p className="text-gray-600 mt-2">Gratuito</p>
             </div>
           </div>
@@ -292,7 +418,12 @@ export default function Home() {
       <section className="relative py-20 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-[#010A11] to-[#012C52]"></div>
         <div className="absolute top-0 left-0 w-full h-full">
-          <Image src="/brilh.svg" alt="Fundo brilhante decorativo" fill className="object-cover opacity-30" />
+          <Image
+            src="/brilh.svg"
+            alt="Fundo brilhante decorativo"
+            fill
+            className="object-cover opacity-30"
+          />
         </div>
 
         <div className="container mx-auto px-4 relative z-10">
@@ -302,8 +433,9 @@ export default function Home() {
                 Comece Agora - <span className="text-[#FFAF40]">É Grátis!</span>
               </h2>
               <p className="text-blue-100 text-lg mb-8 max-w-lg">
-                Sem custos, sem complicações. Encurte seus links e compartilhe com o mundo hoje mesmo! Nossa plataforma
-                é totalmente gratuita e sem limitações.
+                Sem custos, sem complicações. Encurte seus links e compartilhe
+                com o mundo hoje mesmo! Nossa plataforma é totalmente gratuita e
+                sem limitações.
               </p>
               <motion.button
                 whileHover={{ scale: 1.05 }}
@@ -316,7 +448,12 @@ export default function Home() {
 
             <div className="md:w-1/2 flex justify-center">
               <div className="relative w-[200px] h-[200px] md:w-[300px] md:h-[300px]">
-                <Image src="/fire.svg" alt="Ícone de fogo" fill className="object-contain" />
+                <Image
+                  src="/fire.svg"
+                  alt="Ícone de fogo"
+                  fill
+                  className="object-contain"
+                />
                 <div className="absolute -z-10 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[200px] h-[200px] bg-[#FFAF40] rounded-full opacity-20 blur-3xl"></div>
               </div>
             </div>
@@ -328,81 +465,60 @@ export default function Home() {
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-[#034C8C] mb-4">O que nossos usuários dizem</h2>
+            <h2 className="text-3xl font-bold text-[#034C8C] mb-4">
+              O que nossos usuários dizem
+            </h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
-              Milhares de pessoas já utilizam o YKMiniURL para encurtar e compartilhar seus links.
+              Milhares de pessoas já utilizam o YKMiniURL para encurtar e
+              compartilhar seus links.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-gray-50 p-6 rounded-xl border border-gray-100">
-              <div className="flex items-center gap-1 mb-4">
-                {[1, 2, 3, 4, 5].map((star) => (
-                  <svg key={star} className="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118l-2.8-2.034c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                  </svg>
-                ))}
-              </div>
-              <p className="text-gray-700 mb-4">
-                "O YKMiniURL revolucionou a forma como compartilho links nas minhas campanhas de marketing. As
-                estatísticas detalhadas me ajudam a entender melhor o comportamento dos meus clientes."
-              </p>
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center text-[#034C8C] font-bold">
-                  M
-                </div>
-                <div>
-                  <p className="font-medium text-gray-900">Maria Silva</p>
-                  <p className="text-sm text-gray-500">Marketing Digital</p>
-                </div>
-              </div>
-            </div>
+            {clients.map((client, index) => (
+              <div
+                className="bg-gray-50 p-6 rounded-xl border border-gray-100 flex flex-col justify-between"
+                key={index}
+              >
+                <div className="flex items-center gap-1 mb-4">
+                  {Array.from({ length: client.rating }).map((_, index) => (
+                    <svg
+                      key={index}
+                      className="w-5 h-5 text-yellow-400"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118l-2.8-2.034c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                    </svg>
+                  ))}
 
-            <div className="bg-gray-50 p-6 rounded-xl border border-gray-100">
-              <div className="flex items-center gap-1 mb-4">
-                {[1, 2, 3, 4, 5].map((star) => (
-                  <svg key={star} className="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118l-2.8-2.034c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                  </svg>
-                ))}
-              </div>
-              <p className="text-gray-700 mb-4">
-                "Como desenvolvedor, aprecio a simplicidade e eficiência do YKMiniURL. A API é fácil de integrar e a
-                proteção por senha é um diferencial importante para meus projetos."
-              </p>
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center text-[#034C8C] font-bold">
-                  J
+                  {Array.from({ length: 5 - client.rating }).map((_, index) => (
+                    <svg
+                      key={index}
+                      className="w-5 h-5 text-zinc-300"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118l-2.8-2.034c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                    </svg>
+                  ))}
                 </div>
                 <div>
-                  <p className="font-medium text-gray-900">João Santos</p>
-                  <p className="text-sm text-gray-500">Desenvolvedor Web</p>
+                  <p className="text-gray-700 mb-4">{client.feedback}</p>
                 </div>
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center text-[#034C8C] font-bold">
+                      {client.name.split("")[0]}
+                    </div>
+                    <div>
+                      <p className="font-medium text-gray-900">{client.name}</p>
+                      <p className="text-sm text-gray-500">
+                        {client.department}
+                      </p>
+                    </div>
+                  </div>
               </div>
-            </div>
-
-            <div className="bg-gray-50 p-6 rounded-xl border border-gray-100">
-              <div className="flex items-center gap-1 mb-4">
-                {[1, 2, 3, 4, 5].map((star) => (
-                  <svg key={star} className="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118l-2.8-2.034c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                  </svg>
-                ))}
-              </div>
-              <p className="text-gray-700 mb-4">
-                "Uso o YKMiniURL para compartilhar conteúdo nas redes sociais. Os links curtos são mais elegantes e as
-                estatísticas me ajudam a entender o que meu público mais gosta."
-              </p>
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center text-[#034C8C] font-bold">
-                  A
-                </div>
-                <div>
-                  <p className="font-medium text-gray-900">Ana Oliveira</p>
-                  <p className="text-sm text-gray-500">Influenciadora Digital</p>
-                </div>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
@@ -411,7 +527,9 @@ export default function Home() {
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-[#034C8C] mb-4">Perguntas Frequentes</h2>
+            <h2 className="text-3xl font-bold text-[#034C8C] mb-4">
+              Perguntas Frequentes
+            </h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
               Encontre respostas para as dúvidas mais comuns sobre o YKMiniURL.
             </p>
@@ -430,7 +548,9 @@ export default function Home() {
       {/* Final CTA */}
       <section className="py-12 bg-[#034C8C]">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-2xl md:text-3xl font-bold text-white mb-6">Pronto para transformar seus links?</h2>
+          <h2 className="text-2xl md:text-3xl font-bold text-white mb-6">
+            Pronto para transformar seus links?
+          </h2>
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
@@ -441,6 +561,5 @@ export default function Home() {
         </div>
       </section>
     </main>
-  )
+  );
 }
-

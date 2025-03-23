@@ -12,25 +12,6 @@ import { copyToClipboard } from "@/utils/copyBoard"
 const DevPage = () => {
   const { setMessage, msg, Setmsg } = useShortLink()
 
-  const apiFeatures = [
-    {
-      title: "Gratuidade",
-      subtitle: "Use todos os recursos sem pagar nada.",
-    },
-    {
-      title: "Facilidade",
-      subtitle: "Endpoints simples e bem estruturados.",
-    },
-    {
-      title: "Segurança",
-      subtitle: "Links curtos e seguros para compartilhar.",
-    },
-    {
-      title: "Confiabilidade",
-      subtitle: "Retornos claros para facilitar o tratamento de erros no cliente.",
-    },
-  ]
-
   return (
     <>
       {msg.status && (
