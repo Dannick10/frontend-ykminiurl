@@ -1,8 +1,8 @@
 import { useEffect, useRef } from "react";
 
 interface Window {
-    adsbygoogle: {[key: string]: unknown}[]
-  }
+  adsbygoogle: { [key: string]: unknown }[];
+}
 
 const AdComponent = () => {
   const adLoaded = useRef(false);
@@ -20,14 +20,17 @@ const AdComponent = () => {
   }, []);
 
   return (
-    <ins
-      className="adsbygoogle bg-gray-100 w-full mx-auto overflow-hidden"
-      style={{ display: "block", textAlign: "center" }}
-      data-ad-layout="in-article"
-      data-ad-format="fluid"
-      data-ad-client="ca-pub-4567665986142588"
-      data-ad-slot="2645846225"
-    ></ins>
+    <div className="min-w-full bg-gray-100 min-h-40 mx-auto overflow-hidden">
+      <ins
+        className="adsbygoogle"
+        style={{ display: "block", textAlign: "center" }}
+        data-ad-layout="in-article"
+        data-ad-format="auto"
+        data-ad-client="ca-pub-4567665986142588"
+        data-ad-slot="2645846225" 
+        data-full-width-responsive="true"
+      ></ins>
+    </div>
   );
 };
 
