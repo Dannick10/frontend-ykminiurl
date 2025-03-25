@@ -1,24 +1,45 @@
-"use client"
-import Image from "next/image"
-import { motion } from "framer-motion"
-import { IoSearch } from "react-icons/io5"
-import { MdOutlineVisibility, MdVisibilityOff } from "react-icons/md"
-import { FaShieldAlt, FaInfoCircle } from "react-icons/fa"
-import Alert from "@/components/Alert"
-import usePassword from "@/hooks/usePassword"
-import useShortLink from "@/hooks/useShortLink"
-import Inputs from "@/components/Inputs"
-import ShowInfoLinks from "./components/ShowInfoLinks"
-import Loading from "../loading"
-import AdComponent from "@/components/adsense"
+"use client";
+import Image from "next/image";
+import { motion } from "framer-motion";
+import { IoSearch } from "react-icons/io5";
+import { MdOutlineVisibility, MdVisibilityOff } from "react-icons/md";
+import { FaShieldAlt, FaInfoCircle } from "react-icons/fa";
+import Alert from "@/components/Alert";
+import usePassword from "@/hooks/usePassword";
+import useShortLink from "@/hooks/useShortLink";
+import Inputs from "@/components/Inputs";
+import ShowInfoLinks from "./components/ShowInfoLinks";
+import Loading from "../loading";
+import AdComponent from "@/components/adsense";
 
 const InfoPage = () => {
-  const { handleVisibilityPassword, viewPassword, changeVisiblity, handleChangeVisibility } = usePassword()
+  const {
+    handleVisibilityPassword,
+    viewPassword,
+    changeVisiblity,
+    handleChangeVisibility,
+  } = usePassword();
 
-  const { postInfoLink, msg, loading, url, password, Seturl, shortUrl, Setpassword, Setmsg } = useShortLink()
+  const {
+    postInfoLink,
+    msg,
+    loading,
+    url,
+    password,
+    Seturl,
+    shortUrl,
+    Setpassword,
+    Setmsg,
+  } = useShortLink();
 
   if (shortUrl) {
-    return <ShowInfoLinks ShortUrl={shortUrl?.shortUrl} clicks={shortUrl?.clicks} date={shortUrl?.createdAt} />
+    return (
+      <ShowInfoLinks
+        ShortUrl={shortUrl?.shortUrl}
+        clicks={shortUrl?.clicks}
+        date={shortUrl?.createdAt}
+      />
+    );
   }
 
   return (
@@ -55,23 +76,28 @@ const InfoPage = () => {
               </div>
 
               <h1 className="text-3xl md:text-4xl font-bold text-[#034C8C] leading-tight">
-                Deseja ter informações do seu <span className="text-[#BF2C0B]">link encurtado</span>?
+                Deseja ter informações do seu{" "}
+                <span className="text-[#BF2C0B]">link encurtado</span>?
               </h1>
 
               <p className="text-gray-700 text-lg">
-                Cole seu link encurtado abaixo e, se ele estiver protegido, digite a senha para acessar estatísticas
-                detalhadas como cliques e data de criação.
+                Cole seu link encurtado abaixo e, se ele estiver protegido,
+                digite a senha para acessar estatísticas detalhadas como cliques
+                e data de criação.
               </p>
 
               <p className="text-gray-600">
-                O YKMiniURL oferece uma maneira simples e segura de acompanhar o desempenho dos seus links. Veja quem
-                acessou, quando e quantas vezes!
+                O YKMiniURL oferece uma maneira simples e segura de acompanhar o
+                desempenho dos seus links. Veja quem acessou, quando e quantas
+                vezes!
               </p>
             </div>
 
             <div className="mt-10 bg-white p-6 rounded-xl shadow-lg border border-gray-100">
               <div className="flex items-center justify-between mb-4">
-                <h3 className="font-bold text-gray-800">Verificar estatísticas</h3>
+                <h3 className="font-bold text-gray-800">
+                  Verificar estatísticas
+                </h3>
                 <motion.button
                   whileHover={{
                     background: "#BF2C0B",
@@ -98,15 +124,27 @@ const InfoPage = () => {
                     <button
                       className="w-[20%] right-0 top-0 flex justify-center items-center px-[13px] py-1 rounded-[24px] border-[1px] text-[#BF2C0B] cursor-pointer"
                       onClick={handleChangeVisibility}
-                      aria-label={changeVisiblity === "text" ? "Ocultar senha" : "Mostrar senha"}
+                      aria-label={
+                        changeVisiblity === "text"
+                          ? "Ocultar senha"
+                          : "Mostrar senha"
+                      }
                     >
-                      {changeVisiblity === "text" ? <MdOutlineVisibility /> : <MdVisibilityOff />}
+                      {changeVisiblity === "text" ? (
+                        <MdOutlineVisibility />
+                      ) : (
+                        <MdVisibilityOff />
+                      )}
                     </button>
                   </Inputs>
                 </div>
               )}
 
-              <Inputs value={url} onChange={(e) => Seturl(e.target.value)} placehold="Cole seu link encurtado aqui">
+              <Inputs
+                value={url}
+                onChange={(e) => Seturl(e.target.value)}
+                placehold="Cole seu link encurtado aqui"
+              >
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
@@ -120,8 +158,9 @@ const InfoPage = () => {
               <div className="mt-4 flex items-start gap-2 text-sm text-gray-500">
                 <FaInfoCircle className="mt-1 flex-shrink-0" />
                 <p>
-                  Suas informações são armazenadas com segurança e visíveis apenas para você. Se o link estiver
-                  protegido por senha, somente quem a possui poderá acessar os dados detalhados.
+                  Suas informações são armazenadas com segurança e visíveis
+                  apenas para você. Se o link estiver protegido por senha,
+                  somente quem a possui poderá acessar os dados detalhados.
                 </p>
               </div>
             </div>
@@ -147,12 +186,16 @@ const InfoPage = () => {
         </div>
 
         <div className="mt-16">
-          <AdComponent />
+          <AdComponent
+            data-ad-slot="2645846225"
+            data-full-width-responsive="true"
+            data-ad-layout="in-article"
+            data-ad-format="fluid"
+          />
         </div>
       </section>
     </main>
-  )
-}
+  );
+};
 
-export default InfoPage
-
+export default InfoPage;

@@ -98,7 +98,6 @@ export default function Home() {
       department: "Consultor de TI",
     },
   ];
-  
 
   const FAQdata: { title: string; subtitle: string }[] = [
     {
@@ -399,7 +398,7 @@ export default function Home() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                viewport={{once: true}}
+                viewport={{ once: true }}
               >
                 <p className="text-3xl md:text-4xl font-bold text-[#034C8C]">
                   <Counter
@@ -541,7 +540,12 @@ export default function Home() {
           </div>
 
           <div className="mt-16">
-            <AdComponent />
+            <AdComponent
+              data-ad-slot="2645846225"
+              data-full-width-responsive="true"
+              data-ad-layout="in-article"
+              data-ad-format="fluid"
+            />
           </div>
         </div>
       </section>

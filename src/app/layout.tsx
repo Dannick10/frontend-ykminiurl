@@ -1,18 +1,20 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
+import type React from "react"
+import type { Metadata } from "next"
+import { Geist, Geist_Mono } from "next/font/google"
+import "./globals.css"
+import Header from "@/components/Header"
+import Footer from "@/components/Footer"
+import GoogleAdsenseScript from "@/components/GoogleAdsenseScript"
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
-});
+})
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
-});
+})
 
 export const metadata: Metadata = {
   title: "YKMiniURL - Encurtador de Links Gratuito e Seguro",
@@ -27,9 +29,7 @@ export const metadata: Metadata = {
     "encurtar URLs",
     "compartilhar links",
   ],
-  authors: [
-    { name: "Daniel Rocha", url: "https://dannickportifolio.vercel.app/" },
-  ],
+  authors: [{ name: "Daniel Rocha", url: "https://dannickportifolio.vercel.app/" }],
   robots: {
     index: true,
     follow: true,
@@ -49,34 +49,34 @@ export const metadata: Metadata = {
       },
     ],
   },
-};
+  verification: {
+    google: "gkdx1Oj0RB6e4bIKK2LyQwqYMT3E8RLWfs7rMC_w-AA",
+  },
+  other: {
+    "google-adsense-account": "ca-pub-4567665986142588",
+  },
+}
 
-export const viewport = "width=device-width, initial-scale=1.0";
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: "#ffffff",
+}
 
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: React.ReactNode
 }>) {
   return (
     <html lang="pt-br">
-      <head>
-      <meta name="google-adsense-account" content="ca-pub-4567665986142588" />
-      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4567665986142588"
-     crossOrigin="anonymous"></script>
-        <meta
-          name="google-site-verification"
-          content="gkdx1Oj0RB6e4bIKK2LyQwqYMT3E8RLWfs7rMC_w-AA"
-        />
-        <meta name="robots" content="index, follow" />
-      </head>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        <GoogleAdsenseScript />
         <Header />
         <main className="py-8 min-h-80">{children}</main>
         <Footer />
       </body>
     </html>
-  );
+  )
 }
+

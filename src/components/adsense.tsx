@@ -1,37 +1,57 @@
-import { useEffect, useRef } from "react";
-
-interface Window {
-  adsbygoogle: { [key: string]: unknown }[];
+import Router from "next/router";
+import { useEffect } from "react";
+declare global {
+  interface Window {
+    adsbygoogle: unknown[];
+  }
 }
 
-const AdComponent = () => {
-  const adLoaded = useRef(false);
+interface AdsBannerProps {
+  "data-ad-slot": string;
+  "data-ad-format": string;
+  "data-full-width-responsive": string;
+  "data-ad-layout"?: string;
+}
 
+const AdComponent = (props: AdsBannerProps) => {
   useEffect(() => {
-    if (!adLoaded.current) {
-      try {
-        (window as Window).adsbygoogle = (window as Window).adsbygoogle || [];
-        (window as Window).adsbygoogle.push({});
-        adLoaded.current = true;
-      } catch (err) {
-        console.error("Erro ao carregar AdSense:", err);
-      }
+    const handleRouteChange = () => {
+      const intervalId = setInterval(() => {
+        try {
+          if (window.adsbygoogle) {
+            window.adsbygoogle.push({});
+            clearInterval(intervalId);
+          }
+        } catch (err) {
+          console.error("Error pushing ads: ", err);
+          clearInterval(intervalId);
+        }
+      }, 100);
+      return () => clearInterval(intervalId);
+    };
+
+    handleRouteChange();
+
+    if (typeof window !== "undefined") {
+      Router.events.on("routeChangeComplete", handleRouteChange);
+
+      return () => {
+        Router.events.off("routeChangeComplete", handleRouteChange);
+      };
     }
   }, []);
 
   return (
-    <div className="min-w-full bg-gray-100 min-h-40 mx-auto overflow-hidden">
-      <ins
-        className="adsbygoogle"
-        style={{ display: "block", textAlign: "center" }}
-        data-ad-layout="in-article"
-        data-ad-format="auto"
-        data-ad-client="ca-pub-4567665986142588"
-        data-ad-slot="2645846225" 
-        data-full-width-responsive="true"
-      ></ins>
-    </div>
+    <ins
+      className="adsbygoogle adbanner-customize mt-2"
+      style={{
+        display: "block",
+        overflow: "hidden",
+      }}
+      data-adtest="on"
+      data-ad-client="ca-pub-4567665986142588"
+      {...props}
+    />
   );
 };
-
 export default AdComponent;
