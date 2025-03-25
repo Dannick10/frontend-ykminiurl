@@ -1,45 +1,46 @@
-"use client"
+"use client";
 
-import { useEffect, useState } from "react"
-import Link from "next/link"
-import { motion, AnimatePresence } from "framer-motion"
+import { useEffect, useState } from "react";
+import Link from "next/link";
+import { motion, AnimatePresence } from "framer-motion";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
 
 type ButtonHamburguerProps = {
   items: {
-    name: string
-    url: string
-  }[]
-}
+    name: string;
+    url: string;
+  }[];
+};
 
 const ButtonHamburguer = ({ items: NavItems }: ButtonHamburguerProps) => {
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(false);
 
   const handleToggleMenu = () => {
-    setIsOpen(!isOpen)
-  }
+    setIsOpen(!isOpen);
+  };
 
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth > 768) {
-        setIsOpen(false)
+        setIsOpen(false);
       }
-    }
+    };
 
-    window.addEventListener("resize", handleResize)
-    return () => window.removeEventListener("resize", handleResize)
-  }, [])
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   useEffect(() => {
     if (isOpen) {
-      document.body.style.overflow = "hidden"
+      document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = "auto"
+      document.body.style.overflow = "auto";
     }
 
     return () => {
-      document.body.style.overflow = "auto"
-    }
-  }, [isOpen])
+      document.body.style.overflow = "auto";
+    };
+  }, [isOpen]);
 
   return (
     <>
@@ -113,15 +114,58 @@ const ButtonHamburguer = ({ items: NavItems }: ButtonHamburguerProps) => {
                   </ul>
                 </nav>
 
-               
+                <div className="flex justify-center gap-4 mb-4">
+                  <Link
+                    href="https://github.com/Dannick10/frontend-ykminiurl"
+                    target="_blank"
+                  >
+                    <motion.div
+                      whileHover={{ scale: 1.1 }}
+                      whileTap={{ scale: 0.9 }}
+                      className="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center text-gray-700 hover:bg-[#BF2C0B] hover:text-white transition-colors"
+                    >
+                      <FaGithub className="text-xl" />
+                    </motion.div>
+                  </Link>
+                  <Link
+                    href="https://www.linkedin.com/in/futurodevdaniel/"
+                    target="_blank"
+                  >
+                    <motion.div
+                      whileHover={{ scale: 1.1 }}
+                      whileTap={{ scale: 0.9 }}
+                      className="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center text-gray-700 hover:bg-[#BF2C0B] hover:text-white transition-colors"
+                    >
+                      <FaLinkedin className="text-xl" />
+                    </motion.div>
+                  </Link>
+                </div>
+
+                <p className="text-center text-gray-600 text-sm mb-4 md:mb-0">
+                  &copy; {new Date().getFullYear()} YKMiniURL. Todos os direitos
+                  reservados.
+                </p>
+                <div className="flex flex-col justify-center items-center  gap-4">
+                  <Link
+                    href="/privacy"
+                    className="text-sm text-gray-600 hover:text-[#BF2C0B] transition-colors"
+                  >
+                    Política de Privacidade
+                  </Link>
+                  <Link
+                    href="/terms"
+                    className="text-sm text-gray-600 hover:text-[#BF2C0B] transition-colors"
+                  >
+                    Termos de Uso
+                  </Link>
+                </div>
               </div>
             </motion.div>
           </>
         )}
       </AnimatePresence>
     </>
-  )
-}
+  );
+};
 
-export default ButtonHamburguer
-
+export default ButtonHamburguer;

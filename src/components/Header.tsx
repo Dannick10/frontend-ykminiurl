@@ -23,8 +23,13 @@ const Header = () => {
       name: "Desenvolvedores",
       url: "/dev",
     },
+    {
+      name: "Serviços",
+      url: "/services",
+    },
   ];
-  
+
+
   return (
     <header className="fixed w-full z-50 bg-white shadow-md">
       <div className="container mx-auto flex justify-between items-center px-4 md:px-10 h-20">

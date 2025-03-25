@@ -56,48 +56,49 @@ export default function Home() {
 
   const clients: client[] = [
     {
-      rating: 5,
+      rating: 4,
       name: "Maria Silva",
       feedback:
-        "O YKMiniURL revolucionou a forma como compartilho links nas minhas campanhas de marketing. As estatísticas detalhadas me ajudam a entender melhor o comportamento dos meus clientes.",
+        "Gostei da ideia do YKMiniURL, tem sido útil para compartilhar links de forma mais organizada. Ainda estou testando, mas parece promissor.",
       department: "Marketing Digital",
     },
     {
-      rating: 4,
+      rating: 5,
       name: "João Santos",
       feedback:
-        "Como desenvolvedor, aprecio a simplicidade e eficiência do YKMiniURL. A API é fácil de integrar e a proteção por senha é um diferencial importante para meus projetos.",
+        "Funciona bem para o básico, mas senti falta de algumas opções extras na API. No geral, atende ao que promete.",
       department: "Desenvolvedor Web",
     },
     {
       rating: 5,
       name: "Ana Oliveira",
       feedback:
-        "Uso o YKMiniURL para encurtar links em documentos e relatórios internos. A segurança e a personalização dos links são pontos fortes que me ajudam muito no dia a dia.",
+        "Estou usando para encurtar alguns links internos. Ainda não explorei todas as funções, mas parece simples e direto ao ponto.",
       department: "Analista de Dados",
     },
     {
       rating: 3,
       name: "Carlos Mendes",
       feedback:
-        "O serviço é bom, mas gostaria de ver mais opções de personalização nos links gerados. No geral, atende bem às minhas necessidades.",
+        "A ferramenta é boa, mas senti falta de mais opções de personalização. Vou continuar testando para ver se se encaixa melhor nas minhas necessidades.",
       department: "Empreendedor",
     },
     {
-      rating: 5,
+      rating: 4,
       name: "Fernanda Costa",
       feedback:
-        "Simplesmente essencial para minha rotina! Poder acompanhar as métricas dos links compartilhados me dá mais controle sobre minhas campanhas.",
+        "Ainda estou experimentando, mas até agora tem sido útil para compartilhar links de forma rápida. Vou testar mais antes de dar um veredito final.",
       department: "Gestora de Projetos",
     },
     {
-      rating: 4,
+      rating: 5,
       name: "Ricardo Lima",
       feedback:
-        "A facilidade de uso do YKMiniURL é um grande diferencial. Recomendo para quem busca praticidade e segurança na hora de encurtar links.",
+        "Achei prático e fácil de usar. Se houver mais melhorias no futuro, pode se tornar uma ferramenta indispensável.",
       department: "Consultor de TI",
     },
   ];
+  
 
   const FAQdata: { title: string; subtitle: string }[] = [
     {
@@ -123,7 +124,7 @@ export default function Home() {
   ];
 
   const stats = [
-    { label: "Links Encurtados", value: 10, suffix: "M+" },
+    { label: "Links Encurtados", value: 2, suffix: "k+" },
     { label: "Usuários Ativos", value: 5, suffix: "K+" },
     { label: "Uptime", value: 99.9, suffix: "%" },
     { label: "Gratuito", value: 100, suffix: "%" },
@@ -398,6 +399,7 @@ export default function Home() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{once: true}}
               >
                 <p className="text-3xl md:text-4xl font-bold text-[#034C8C]">
                   <Counter
