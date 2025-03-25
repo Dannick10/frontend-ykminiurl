@@ -52,16 +52,16 @@ const Footer = () => {
       title: "Serviços",
       links: [
         {
-          text: "UI/UX",
-          href: "/ui-ux",
+          text: "FrontEnd",
+          href: "/services",
         },
         {
-          text: "Designers",
-          href: "/designers",
+          text: "Fullstack",
+          href: "/services",
         },
         {
-          text: "Web - service",
-          href: "/webservice",
+          text: "Backend",
+          href: "/services",
         },
       ],
     },

@@ -124,7 +124,7 @@ export default function Home() {
 
   const stats = [
     { label: "Links Encurtados", value: 10, suffix: "M+" },
-    { label: "Usuários Ativos", value: 5, suffix: "K+" }, 
+    { label: "Usuários Ativos", value: 5, suffix: "K+" },
     { label: "Uptime", value: 99.9, suffix: "%" },
     { label: "Gratuito", value: 100, suffix: "%" },
   ];
@@ -316,7 +316,7 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             <div className="bg-white p-6 rounded-xl shadow-md border border-gray-100 hover:shadow-lg transition-all">
               <div className="w-14 h-14 bg-blue-100 rounded-full flex items-center justify-center mb-4 ">
-                <FaLink className="w-6 h-6 text-[#034C8C]"/>
+                <FaLink className="w-6 h-6 text-[#034C8C]" />
               </div>
               <h3 className="text-xl font-bold text-gray-800 mb-2">
                 Links Curtos
@@ -384,10 +384,6 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <Cards />
           </div>
-
-          <div className="mt-16">
-            <AdComponent />
-          </div>
         </div>
       </section>
 
@@ -396,13 +392,19 @@ export default function Home() {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
             {stats.map((stat, index) => (
-              <motion.div className="p-6 bg-white rounded-xl shadow-md" key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
+              <motion.div
+                className="p-6 bg-white rounded-xl shadow-md"
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
               >
                 <p className="text-3xl md:text-4xl font-bold text-[#034C8C]">
-                  <Counter value={stat.value} suffix={stat.suffix} duration={10}  />
+                  <Counter
+                    value={stat.value}
+                    suffix={stat.suffix}
+                    duration={10}
+                  />
                 </p>
                 <p className="text-gray-600 mt-2">{stat.label}</p>
               </motion.div>
@@ -453,8 +455,7 @@ export default function Home() {
                   fill
                   className="object-contain"
                 />
-                <div
-                className="absolute -z-10 top-1/2 animate-pulse left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[200px] h-[200px] bg-[#FFAF40] rounded-full opacity-20 blur-2xl"></div>
+                <div className="absolute -z-10 top-1/2 animate-pulse left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[200px] h-[200px] bg-[#FFAF40] rounded-full opacity-20 blur-2xl"></div>
               </div>
             </div>
           </div>
