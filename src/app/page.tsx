@@ -54,51 +54,6 @@ export default function Home() {
     setMessage,
   } = useShortLink();
 
-  const clients: client[] = [
-    {
-      rating: 4,
-      name: "Maria Silva",
-      feedback:
-        "Gostei da ideia do YKMiniURL, tem sido útil para compartilhar links de forma mais organizada. Ainda estou testando, mas parece promissor.",
-      department: "Marketing Digital",
-    },
-    {
-      rating: 5,
-      name: "João Santos",
-      feedback:
-        "Funciona bem para o básico, mas senti falta de algumas opções extras na API. No geral, atende ao que promete.",
-      department: "Desenvolvedor Web",
-    },
-    {
-      rating: 5,
-      name: "Ana Oliveira",
-      feedback:
-        "Estou usando para encurtar alguns links internos. Ainda não explorei todas as funções, mas parece simples e direto ao ponto.",
-      department: "Analista de Dados",
-    },
-    {
-      rating: 3,
-      name: "Carlos Mendes",
-      feedback:
-        "A ferramenta é boa, mas senti falta de mais opções de personalização. Vou continuar testando para ver se se encaixa melhor nas minhas necessidades.",
-      department: "Empreendedor",
-    },
-    {
-      rating: 4,
-      name: "Fernanda Costa",
-      feedback:
-        "Ainda estou experimentando, mas até agora tem sido útil para compartilhar links de forma rápida. Vou testar mais antes de dar um veredito final.",
-      department: "Gestora de Projetos",
-    },
-    {
-      rating: 5,
-      name: "Ricardo Lima",
-      feedback:
-        "Achei prático e fácil de usar. Se houver mais melhorias no futuro, pode se tornar uma ferramenta indispensável.",
-      department: "Consultor de TI",
-    },
-  ];
-
   const FAQdata: { title: string; subtitle: string }[] = [
     {
       title: "O que é o YKMiniURL?",
@@ -459,66 +414,6 @@ export default function Home() {
                 <div className="absolute -z-10 top-1/2 animate-pulse left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[200px] h-[200px] bg-[#FFAF40] rounded-full opacity-20 blur-2xl"></div>
               </div>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Testimonials Section */}
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-[#034C8C] mb-4">
-              O que nossos usuários dizem
-            </h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
-              Milhares de pessoas já utilizam o YKMiniURL para encurtar e
-              compartilhar seus links.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {clients.map((client, index) => (
-              <div
-                className="bg-gray-50 p-6 rounded-xl border border-gray-100 flex flex-col justify-between"
-                key={index}
-              >
-                <div className="flex items-center gap-1 mb-4">
-                  {Array.from({ length: client.rating }).map((_, index) => (
-                    <svg
-                      key={index}
-                      className="w-5 h-5 text-yellow-400"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                    >
-                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118l-2.8-2.034c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                    </svg>
-                  ))}
-
-                  {Array.from({ length: 5 - client.rating }).map((_, index) => (
-                    <svg
-                      key={index}
-                      className="w-5 h-5 text-zinc-300"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                    >
-                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118l-2.8-2.034c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                    </svg>
-                  ))}
-                </div>
-                <div>
-                  <p className="text-gray-700 mb-4">{client.feedback}</p>
-                </div>
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center text-[#034C8C] font-bold">
-                    {client.name.split("")[0]}
-                  </div>
-                  <div>
-                    <p className="font-medium text-gray-900">{client.name}</p>
-                    <p className="text-sm text-gray-500">{client.department}</p>
-                  </div>
-                </div>
-              </div>
-            ))}
           </div>
         </div>
       </section>
