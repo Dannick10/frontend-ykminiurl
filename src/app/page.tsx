@@ -24,13 +24,6 @@ import { copyToClipboard } from "@/utils/copyBoard";
 import Link from "next/link";
 import Counter from "@/components/Counter";
 
-type client = {
-  rating: number;
-  name: string;
-  department: string;
-  feedback: string;
-};
-
 export default function Home() {
   const [copied, setCopied] = useState(false);
 
