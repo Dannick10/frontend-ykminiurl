@@ -58,9 +58,6 @@ https://backend-ykminiurl.onrender.com/docs
 🚀 **Aplicação Online**  
 https://ykminiurl.vercel.app/
 
-🎨 **Protótipo no Figma**  
-https://www.figma.com/design/ABmbwn4qIWOZ4N7diKZ7Wg/ykminiurl
-
 ⚙️ **Repositório Backend**  
 https://github.com/Dannick10/Backend-ykminiurl
 
