@@ -1,94 +1,140 @@
 ![banner](https://github.com/user-attachments/assets/7285a6f5-035f-4aa3-907b-a5c1647a8bec)
 
 # 🌐 YKMiniURL
+**Transforme links longos em URLs curtas, seguras e monitoradas em segundos.**
 
-**Transforme links longos em URLs curtas e seguras em segundos!**  
-Compartilhar links nunca foi tão fácil e seguro.  
-
----
-
-## 🚀 **Sobre o Projeto**  
-
-**YKMiniURL** é uma solução eficiente e gratuita para gerenciar e compartilhar links. Desenvolvido com tecnologias modernas, nosso serviço oferece:  
-
-- **Encurtamento de Links Longos**: Torne seus links curtos e fáceis de compartilhar.  
-- **Proteção com Senha**: Adicione uma camada extra de segurança aos seus links.  
-- **Estatísticas Detalhadas**: Visualize dados sobre cliques, data de criação e desempenho dos seus links.  
-- **Redirecionamento Simples**: Acesse o link original com apenas um clique.
-
-### 🛠️ **Tecnologias Utilizadas**  
-
-#### Frontend  
-- **Next.js**  
-- **TypeScript**  
-- **TailwindCSS**  
-
-#### Backend  
-- **Node.js**  
-- **Express.js**  
-- **MongoDB**  
-- **Bcrypt**  
-- **CORS**
-- **Swagger**
-
-### UI/UX
-- **figma**
-- **photoshop**
+[![Next.js](https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white)](https://nextjs.org/)
+[![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)](https://nodejs.org/)
+[![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white)](https://www.mongodb.com/)
+[![Swagger](https://img.shields.io/badge/Swagger-85EA2D?style=for-the-badge&logo=swagger&logoColor=black)](https://backend-ykminiurl.onrender.com/docs)
 
 ---
 
-## ✒ **UI/UX**  
-O UI/UX do YKMiniURL foi criado no **Figma**, utilizando **Auto Layout** para garantir um design responsivo e organizado.
+### ⚡ Sobre o Projeto
 
-Confira o design do projeto no Figma: [Figma do YKMiniURL](https://www.figma.com/design/ABmbwn4qIWOZ4N7diKZ7Wg/ykminiurl?node-id=0-1&t=9TjP9yKKKc1IAmgd-1)
+O **YKMiniURL** é uma aplicação **Fullstack** desenvolvida para simplificar o compartilhamento de links na internet.  
+A plataforma permite transformar URLs longas em links curtos, fáceis de compartilhar e monitorar.
 
----
+Além do encurtamento, o sistema inclui **camadas de segurança e análise de métricas**, permitindo acompanhar o uso dos links e proteger redirecionamentos com senha.
 
-## 🔧 **Backend**  
-O backend do YKMiniURL foi desenvolvido utilizando **Node.js**, **Express**, **MongoDB**, **Bcrypt** e **CORS**.
-
-Acesse o Repositório do Backend: [YKMiniURL Repositório Backend](https://github.com/Dannick10/Backend-ykminiurl)
-
-## 📚 **Documentação da API**  
-
-A **YKMiniURL API** é interativa e documentada via **Swagger**, permitindo que você explore endpoints, parâmetros e execute testes diretamente na interface.  
-
-🔗 **Link da Documentação da API**:  
-
-[YKMiniURL API - Swagger](https://backend-ykminiurl.onrender.com/docs)  
-
-### **Como Começar**  
-1. Consulte os endpoints disponíveis na documentação Swagger.  
-2. Teste a API usando ferramentas como Postman ou cURL.  
-3. Integre o serviço no seu sistema para otimizar o gerenciamento de links.  
+A aplicação foi construída com foco em **performance, segurança e experiência do usuário**, oferecendo uma interface moderna e um backend escalável.
 
 ---
 
-## 🎯 **Funcionalidades da API**  
-- **Criar Links Curtos**: Transforme URLs longas em links curtos.  
-- **Adicionar Senhas**: Defina uma senha para proteger o acesso aos links.  
-- **Obter Informações**: Acompanhe estatísticas detalhadas dos links criados.  
-- **Redirecionar Links**: Redirecione para URLs originais.  
+### 🚀 Funcionalidades Principais
+
+| Recurso | Descrição |
+| :--- | :--- |
+| **🔗 Encurtamento de URL** | Converte links longos em URLs curtas e fáceis de compartilhar. |
+| **🔐 Proteção por Senha** | Permite proteger links utilizando criptografia com Bcrypt. |
+| **📊 Analytics de Cliques** | Visualize métricas de acesso e informações de uso dos links. |
+| **⚡ Redirecionamento Rápido** | Sistema eficiente de redirecionamento para a URL original. |
+| **🎨 Interface Responsiva** | Design moderno adaptado para desktop e dispositivos móveis. |
 
 ---
 
-## 🐱‍👤 **Funcionalidades futuras**
-- **Reportar url**
-- **Criar qrCode**
+### 🛠️ Tecnologias Utilizadas
 
-## 🌟 **Comece Agora - É Grátis!**  
-
-Visite o site e aproveite todos os recursos:  
-
-🔗 [YKMiniURL](https://ykminiurl.vercel.app/)  
+- **Frontend:** Next.js, TypeScript, TailwindCSS
+- **Backend:** Node.js, Express.js
+- **Banco de Dados:** MongoDB com Mongoose
+- **Segurança:** Bcrypt
+- **Documentação da API:** Swagger UI
+- **Design:** Figma, Photoshop
 
 ---
 
-## 📬 **Contato**  
+### 📚 Documentação da API
 
-- **Portfólio**: [Daniel Rocha](https://dannickportifolio.vercel.app/)  
-- **GitHub**: [Dannick10](https://github.com/Dannick10)  
-- **E-mail**: [ykdanieldev@gmail.com](mailto:ykdanieldev@gmail.com)  
+A API do projeto possui documentação interativa utilizando **Swagger**, permitindo testar endpoints diretamente pelo navegador.
 
-Sinta-se à vontade para abrir issues no repositório ou contribuir com melhorias! 
+🔗 **Acesse aqui:**  
+https://backend-ykminiurl.onrender.com/docs
 
+---
+
+### 🌐 Deploy e Recursos
+
+🚀 **Aplicação Online**  
+https://ykminiurl.vercel.app/
+
+🎨 **Protótipo no Figma**  
+https://www.figma.com/design/ABmbwn4qIWOZ4N7diKZ7Wg/ykminiurl
+
+⚙️ **Repositório Backend**  
+https://github.com/Dannick10/Backend-ykminiurl
+
+---
+
+## ⚙️ Instalação
+
+Siga os passos abaixo para rodar o projeto localmente:
+
+1. Clone o repositório:
+
+```bash
+git clone https://github.com/Dannick10/ykminiurl.git
+```
+
+2. Acesse a pasta do projeto:
+
+```bash
+cd ykminiurl
+```
+
+3. Instale as dependências:
+
+```bash
+npm install
+```
+
+4. Execute o projeto em ambiente de desenvolvimento:
+
+```bash
+npm run dev
+```
+
+5. Abra no navegador:
+
+```
+http://localhost:3000
+```
+
+---
+
+## 🤝 Contribuição
+
+Contribuições são sempre bem-vindas! Para colaborar com o projeto, siga os passos abaixo:
+
+1. Faça um **Fork** deste repositório.
+2. Crie uma **Branch** para sua melhoria ou correção:
+
+```bash
+git checkout -b feature/Melhoria
+```
+
+3. Faça o **Commit** das suas alterações:
+
+```bash
+git commit -m "Add: descrição da melhoria"
+```
+
+4. Envie as alterações para o seu fork:
+
+```bash
+git push origin feature/Melhoria
+```
+
+5. Abra um **Pull Request** explicando as mudanças realizadas.
+
+---
+
+## 📄 Licença
+
+Este projeto está licenciado sob a **MIT License**.
+
+---
+
+<div align="center">
+<sub>Desenvolvido com foco em acessibilidade e tecnologia por <strong>Daniel Rocha</strong></sub>
+</div>
